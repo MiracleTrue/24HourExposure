@@ -15,24 +15,24 @@ class AdminTablesSeeder extends Seeder
     /*自定义添加的权限*/
     private $custom_permissions =
         [
-//            [
-//                'name' => '用户管理',
-//                'slug' => 'users',
-//                'http_method' => '',
-//                'http_path' => "/users",
-//            ],
+            [
+                'name' => '用户管理',
+                'slug' => 'users',
+                'http_method' => '',
+                'http_path' => "/users",
+            ],
         ];
 
     /*自定义添加的菜单*/
     private $custom_menus =
         [
-//            [
-//                'parent_id' => 0,
-//                'order' => 1,
-//                'title' => '用户管理',
-//                'icon' => 'fa-list',
-//                'uri' => '/users',
-//            ],
+            [
+                'parent_id' => 0,
+                'order' => 1,
+                'title' => '用户管理',
+                'icon' => 'fa-list',
+                'uri' => '/users',
+            ],
 
         ];
 

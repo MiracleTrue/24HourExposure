@@ -11,11 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return '首页';
-});
 
 Auth::routes();
+Route::get('/', 'PagesController@root')->name('root');
+
 
 /*需要登录的路由*/
 Route::group(['middleware' => 'auth'], function () {
