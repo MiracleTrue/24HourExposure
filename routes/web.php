@@ -12,5 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return '首页';
+});
+
+Auth::routes();
+
+/*需要登录的路由*/
+Route::group(['middleware' => 'auth'], function () {
+
+
 });
