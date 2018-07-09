@@ -134,6 +134,11 @@ $ php artisan admin:make UsersController --model=App\\Models\\User
 
 其中 --model=App\\Models\\User 代表新创建的这个控制器是要对 App\Models\User 这个模型做增删改查。
 ```
+
+
+##
+## Composer 常用插件:
+
 ###### Redis 队列驱动器依赖
 ```
 composer require "predis/predis:~1.0"
@@ -182,9 +187,6 @@ WECHAT_KEY=
             'subject' => '支付 Laravel Shop 的订单：' . $order->no, // 订单标题
         ]);
 ```
-
-##
-## Composer 常用插件:
 
 ###### 安装 DingoAPI
 ```
