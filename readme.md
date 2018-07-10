@@ -26,6 +26,7 @@ SASS_BINARY_SITE=http://npm.taobao.org/mirrors/node-sass yarn
 //生产环境数据数据迁移
 php artisan migrate:refresh
 php artisan db:seed --class=AdminTablesSeeder
+php artisan db:seed --class=LocationsSeeder
 
 //测试环境数据数据迁移(含测试数据)
 php artisan migrate:refresh --seed
@@ -71,6 +72,8 @@ php artisan vendor:publish
 composer dumpautoload
 
 //清除配置文件缓存
+php artisan config:clear
+
 php artisan config:cache
 ```
 
@@ -143,6 +146,11 @@ $ php artisan admin:make UsersController --model=App\\Models\\User
 composer require "overtrue/easy-sms"
 https://github.com/overtrue/easy-sms
 教程:https://laravel-china.org/courses/laravel-advance-training-5.5/791/sms-provider
+```
+
+###### 安装 Guzzle HTTP 请求依赖包
+```
+composer require "guzzlehttp/guzzle:~6.3"
 ```
 
 ##
@@ -229,11 +237,6 @@ php artisan vendor:publish --provider="Mews\Purifier\PurifierServiceProvider"
 composer require "mews/captcha:~2.0"
 运行以下命令生成配置文件 config/captcha.php：
 php artisan vendor:publish --provider='Mews\Captcha\CaptchaServiceProvider'
-```
-
-###### 安装 Guzzle HTTP 请求依赖包
-```
-composer require "guzzlehttp/guzzle:~6.3"
 ```
 
 ###### 安装 PinYin 基于 CC-CEDICT 词典的中文转拼音工具，是一套优质的汉字转拼音解决方案。

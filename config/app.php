@@ -2,6 +2,9 @@
 
 return [
 
+
+    'tencent_lbs_key' => env('TENCENT_LBS_KEY', null),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

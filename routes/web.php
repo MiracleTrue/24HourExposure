@@ -14,12 +14,13 @@
 
 Route::get('test', function () {
 
-
+    dd(session('LBS'));
 });
 
 Auth::routes();
 Route::get('/', 'PagesController@root')->name('root');
-Route::post('phone_verification', 'PhoneVerificationController@store')->name('phone_verification.store');
+
+Route::post('phone_verification', 'PhoneVerificationController@store')->name('phone_verification.store');//发送短信验证码
 
 /*需要登录的路由*/
 Route::group(['middleware' => 'auth'], function () {

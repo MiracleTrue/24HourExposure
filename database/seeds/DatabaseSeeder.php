@@ -15,5 +15,8 @@ class DatabaseSeeder extends Seeder
         //用户
         $this->call(UsersSeeder::class);
 
+        //位置
+        $this->call(LocationsSeeder::class);
+
     }
 }
