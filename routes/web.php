@@ -12,9 +12,14 @@
 */
 
 
+Route::get('test', function () {
+
+
+});
+
 Auth::routes();
 Route::get('/', 'PagesController@root')->name('root');
-
+Route::post('phone_verification', 'PhoneVerificationController@store')->name('phone_verification.store');
 
 /*需要登录的路由*/
 Route::group(['middleware' => 'auth'], function () {

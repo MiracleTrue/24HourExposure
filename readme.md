@@ -83,6 +83,10 @@ php artisan config:cache
 - APP_LOG_LEVEL=`日志记录的等级默认记录全部 debug 生成环境应该为:error`
 - APP_URL=`项目的Url地址  http://www.xxx.com`
 - DEBUGBAR_ENABLED=`是否开启 Debugbar`
+
+###### 腾讯云短信
+- QCLOUD_SDK_APP_ID= `//SDK APP ID`
+- QCLOUD_APP_KEY= `//APP KEY`
 ## Composer 已安装插件:
 ###### 安装 Laravel-ide-helper IDE & 模型注释助手
 ```
@@ -134,7 +138,12 @@ $ php artisan admin:make UsersController --model=App\\Models\\User
 
 其中 --model=App\\Models\\User 代表新创建的这个控制器是要对 App\Models\User 这个模型做增删改查。
 ```
-
+###### 安装 easy-sms
+```
+composer require "overtrue/easy-sms"
+https://github.com/overtrue/easy-sms
+教程:https://laravel-china.org/courses/laravel-advance-training-5.5/791/sms-provider
+```
 
 ##
 ## Composer 常用插件:
@@ -265,11 +274,4 @@ resources/views/layouts/app.blade.php
     @if (app()->isLocal())
         @include('sudosu::user-selector')
     @endif
-```
-
-###### 安装 easy-sms
-```
-composer require "overtrue/easy-sms"
-php artisan make:provider EasySmsServiceProvider
-教程:https://laravel-china.org/courses/laravel-advance-training-5.5/791/sms-provider
 ```

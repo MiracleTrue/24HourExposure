@@ -31,6 +31,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
         'password' => $password ?: $password = bcrypt('123456'),
         'remember_token' => str_random(10),
         'avatar' => $faker->imageUrl(),
+        'id_card' => $faker->randomNumber(9) . $faker->randomNumber(9),
         'created_at' => $created_at,
         'updated_at' => $updated_at,
     ];
