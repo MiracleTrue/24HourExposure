@@ -10,29 +10,21 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     * @var array
-     */
+
     protected $fillable = [
         'phone', 'name', 'avatar', 'password', 'id_card'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     * @var array
-     */
+
     protected $hidden = [
         'password', 'remember_token',
     ];
-
 
     protected $appends = ['avatar_url'];
 
 
     public function getAvatarUrlAttribute()
     {
-
         // 如果 image 字段本身就已经是完整的 url 就直接返回
         if (Str::startsWith($this->attributes['avatar'], ['http://', 'https://']))
         {

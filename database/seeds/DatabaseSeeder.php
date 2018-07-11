@@ -18,5 +18,8 @@ class DatabaseSeeder extends Seeder
         //位置
         $this->call(LocationsSeeder::class);
 
+        //新闻
+
+
     }
 }
