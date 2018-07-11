@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(LocationsSeeder::class);
 
         //新闻
-
-
+        $this->call(NewsCategoriesSeeder::class);
+        $this->call(NewsSeeder::class);
     }
 }
