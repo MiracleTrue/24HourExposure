@@ -17,7 +17,7 @@ mv .env.example .env
 php artisan key:generate
 
 //静态资源软链接
-sudo php  artisan storage:link
+sudo php artisan storage:link
 
 //运行 Laravel Mix
 yarn config set registry https://registry.npm.taobao.org
@@ -151,6 +151,19 @@ https://github.com/overtrue/easy-sms
 ###### 安装 Guzzle HTTP 请求依赖包
 ```
 composer require "guzzlehttp/guzzle:~6.3"
+```
+
+###### 图片处理扩展包，支持裁剪、水印等处理
+```
+composer require "intervention/image"
+
+php artisan vendor:publish --provider="Intervention\Image\ImageServiceProviderLaravel5"
+
+config/app.php   $providers
+Intervention\Image\ImageServiceProvider::class
+
+config/app.php   $aliases
+'Image' => Intervention\Image\Facades\Image::class
 ```
 
 ##

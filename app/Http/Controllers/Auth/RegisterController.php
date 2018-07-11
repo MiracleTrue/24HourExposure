@@ -46,7 +46,6 @@ class RegisterController extends Controller
     {
         $verifyData = \Cache::get('PhoneVerificationCode_' . $data['phone']);
 
-//        dd($verifyData);
 
         return Validator::make($data, [
             'phone' => [
