@@ -14,12 +14,22 @@ Route::group([
 
     $router->get('/', 'HomeController@index');
 
+
     $router->get('users', 'UsersController@index')->name('admin.users.index');
 
 
     $router->resource('news_categories', NewsCategoriesController::class);
 
+
     $router->resource('news', NewsController::class);
+
+
+    $router->resource('exposure_categories', ExposureCategoriesController::class);
+
+
+    $router->get('exposures', 'ExposuresController@index')->name('exposures.index');
+    $router->get('exposures/{id}', 'ExposuresController@show')->name('exposures.show');
+    $router->get('exposure_comments/{exposure}', 'ExposureCommentsController@index')->name('exposure_comments.index');
 
 
 //    $router->resource('example', ExampleController::class);

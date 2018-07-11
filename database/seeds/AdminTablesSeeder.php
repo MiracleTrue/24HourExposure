@@ -33,6 +33,18 @@ class AdminTablesSeeder extends Seeder
                 'http_method' => '',
                 'http_path' => "/news",
             ],
+            [
+                'name' => '曝光分类管理',
+                'slug' => 'exposure_categories',
+                'http_method' => '',
+                'http_path' => "/exposure_categories",
+            ],
+            [
+                'name' => '曝光管理',
+                'slug' => 'exposures',
+                'http_method' => '',
+                'http_path' => "/exposures",
+            ],
         ];
 
     /*自定义添加的菜单*/
@@ -58,6 +70,20 @@ class AdminTablesSeeder extends Seeder
                 'title' => '新闻管理',
                 'icon' => 'fa-list',
                 'uri' => '/news',
+            ],
+            [
+                'parent_id' => 0,
+                'order' => 1,
+                'title' => '曝光分类管理',
+                'icon' => 'fa-list',
+                'uri' => '/exposure_categories',
+            ],
+            [
+                'parent_id' => 0,
+                'order' => 1,
+                'title' => '曝光管理',
+                'icon' => 'fa-list',
+                'uri' => '/exposures',
             ],
 
         ];
