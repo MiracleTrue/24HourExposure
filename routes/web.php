@@ -40,5 +40,4 @@ Route::group(['middleware' => 'auth'], function () {
     /*曝光*/
 
 
-
 });

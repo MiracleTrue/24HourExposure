@@ -12,7 +12,7 @@ $factory->define(App\Models\NewsCategory::class, function (Faker $faker) {
     $created_at = $faker->dateTimeThisMonth($updated_at);
 
     return [
-        'name' => $faker->safeColorName,
+        'name' => $faker->colorName,
         'description' => '描述',
         'item_count' => $faker->randomNumber(2),
         'created_at' => $created_at,

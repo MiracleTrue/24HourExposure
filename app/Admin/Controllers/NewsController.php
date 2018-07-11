@@ -2,6 +2,9 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\News;
+
+use App\Models\NewsCategory;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Facades\Admin;
@@ -9,21 +12,19 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 
-class ExampleController extends Controller
+class NewsController extends Controller
 {
     use ModelForm;
 
     /**
      * Index interface.
-     *
      * @return Content
      */
     public function index()
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('新闻列表');
 
             $content->body($this->grid());
         });
@@ -31,7 +32,6 @@ class ExampleController extends Controller
 
     /**
      * Edit interface.
-     *
      * @param $id
      * @return Content
      */
@@ -39,8 +39,7 @@ class ExampleController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('新闻编辑');
 
             $content->body($this->form()->edit($id));
         });
@@ -48,15 +47,13 @@ class ExampleController extends Controller
 
     /**
      * Create interface.
-     *
      * @return Content
      */
     public function create()
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('新闻创建');
 
             $content->body($this->form());
         });
@@ -64,33 +61,46 @@ class ExampleController extends Controller
 
     /**
      * Make a grid builder.
-     *
      * @return Grid
      */
     protected function grid()
     {
-        return Admin::grid(YourModel::class, function (Grid $grid) {
+        return Admin::grid(News::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
+            $grid->category()->name('分类');
+            $grid->title('标题');
 
-            $grid->created_at();
-            $grid->updated_at();
+            $grid->created_at('创建时间')->sortable();
+            $grid->updated_at('更新时间')->sortable();
         });
     }
 
     /**
      * Make a form builder.
-     *
      * @return Form
      */
     protected function form()
     {
-        return Admin::form(YourModel::class, function (Form $form) {
+        return Admin::form(News::class, function (Form $form) {
+
+
+            $categories = NewsCategory::all()->mapWithKeys(function ($item) {
+                return [$item['id'] => $item['name']];
+            });
+//            $categories = NewsCategory::all()->keyBy('id')->pluck('name');
+
+//            dd($categories);
 
             $form->display('id', 'ID');
 
-            $form->display('created_at', 'Created At');
-            $form->display('updated_at', 'Updated At');
+            $form->select('category_id', '分类')->options($categories)->rules('required');
+            $form->text('title', '标题')->rules('required');
+            $form->editor('content', '内容')->rules('required');
+
+
+            $form->display('created_at', '创建时间');
+            $form->display('updated_at', '更新时间');
         });
     }
 }

@@ -21,5 +21,11 @@ class DatabaseSeeder extends Seeder
         //新闻
         $this->call(NewsCategoriesSeeder::class);
         $this->call(NewsSeeder::class);
+
+        //曝光
+        $this->call(ExposureCategoriesSeeder::class);
+        $this->call(ExposuresSeeder::class);
+        $this->call(ExposureCommentsSeeder::class);
+
     }
 }

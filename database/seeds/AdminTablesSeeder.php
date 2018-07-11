@@ -21,6 +21,18 @@ class AdminTablesSeeder extends Seeder
                 'http_method' => '',
                 'http_path' => "/users",
             ],
+            [
+                'name' => '新闻分类管理',
+                'slug' => 'news_categories',
+                'http_method' => '',
+                'http_path' => "/news_categories",
+            ],
+            [
+                'name' => '新闻管理',
+                'slug' => 'news',
+                'http_method' => '',
+                'http_path' => "/news",
+            ],
         ];
 
     /*自定义添加的菜单*/
@@ -32,6 +44,20 @@ class AdminTablesSeeder extends Seeder
                 'title' => '用户管理',
                 'icon' => 'fa-list',
                 'uri' => '/users',
+            ],
+            [
+                'parent_id' => 0,
+                'order' => 1,
+                'title' => '新闻分类管理',
+                'icon' => 'fa-list',
+                'uri' => '/news_categories',
+            ],
+            [
+                'parent_id' => 0,
+                'order' => 1,
+                'title' => '新闻管理',
+                'icon' => 'fa-list',
+                'uri' => '/news',
             ],
 
         ];
