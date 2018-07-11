@@ -20,4 +20,14 @@ Route::group([
     $router->resource('news_categories', NewsCategoriesController::class);
 
     $router->resource('news', NewsController::class);
+
+
+//    $router->resource('example', ExampleController::class);
+//    $router->get('example', 'ExampleController@index')->name('example.index');
+//    $router->get('example/{id}', 'ExampleController@show')->name('example.show');
+//    $router->get('example/create', 'ExampleController@create')->name('example.create');
+//    $router->get('example/{id}/edit', 'ExampleController@edit')->name('example.edit');
+//    $router->post('example', 'ExampleController@store')->name('example.store');
+//    $router->put('example/{id}', 'ExampleController@update')->name('example.update');
+//    $router->delete('example/{id}', 'ExampleController@destroy')->name('example.destroy');
 });
