@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <h1>首页</h1>
                 </div>
             </div>
         </div>
