@@ -11,6 +11,8 @@ class Exposure extends Model
         'category_id', 'name', 'title', 'content'
     ];
 
+    protected $appends = ['gifts'];
+
     //默认排序
     public function scopeDefaultSort($query)
     {
@@ -37,18 +39,24 @@ class Exposure extends Model
         return $this->hasMany(ExposureComment::class);
     }
 
-    public function order()
+    public function orders()
     {
-        return $this->belongsTo(Order::class);
+        return $this->hasMany(Order::class);
+    }
 
+    public function getGiftsAttribute(Gift $gifts)
+    {
+        return $this->order_items->groupBy('gift_id')->transform(function ($item, $key) use ($gifts) {
+            $a = $gifts->get();
+            dd($a);
+            $gift = $item->first()->gift;
+            $gift->sum = $item->sum('number');
+            return $gift;
+        });
     }
 
     public function order_items()
     {
-//
-//        return $this->belongsToMany(Product::class, 'user_favorite_products')
-//            ->withTimestamps()
-//            ->orderBy('user_favorite_products.created_at', 'desc');
-
+        return $this->hasManyThrough(OrderItem::class, Order::class);
     }
 }
