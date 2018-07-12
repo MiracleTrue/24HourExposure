@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'XXX')
+@section('title',' 的个人中心')
 
 @section('content')
 
 
 
-    {{dump($categories)}}
     {{dump($news)}}
 
 

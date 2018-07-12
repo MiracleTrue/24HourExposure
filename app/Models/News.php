@@ -10,6 +10,12 @@ class News extends Model
         'category_id', 'title', 'content'
     ];
 
+    //默认排序
+    public function scopeDefaultSort($query)
+    {
+        return $query->orderBy('created_at', 'desc');
+    }
+
     public function category()
     {
         return $this->belongsTo(NewsCategory::class);
