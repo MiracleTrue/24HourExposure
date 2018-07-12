@@ -11,7 +11,7 @@ class WangEditorController extends Controller
     public function images(Request $request)
     {
         $data = $this->validate($request, [
-            'images.*' => 'required|image|mimes:jpeg',
+            'images.*' => 'required|image|mimes:jpeg,png,gif',
         ], [], [
             'images.*' => '图片',
         ]);

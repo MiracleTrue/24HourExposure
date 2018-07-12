@@ -27,5 +27,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ExposuresSeeder::class);
         $this->call(ExposureCommentsSeeder::class);
 
+        //礼物
+        $this->call(GiftsSeeder::class);
+
     }
 }

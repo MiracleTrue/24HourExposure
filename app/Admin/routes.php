@@ -11,7 +11,7 @@ Route::group([
 ], function (Router $router) {
     $router->post('wang_editor/images', 'WangEditorController@images');/*WangEditor上传图片*/
 
-
+//    $router->redirect('/', 'users');
     $router->get('/', 'HomeController@index');
 
 
