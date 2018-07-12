@@ -1,0 +1,179 @@
+.exposurebox{
+	background: #fbfbfb;
+	
+	.header{
+		height: 1rem;
+		text-align: center;
+		line-height: 1rem;
+		background: #000000;
+		color: #FFFFFF;
+		font-size: 0.28rem;
+		font-weight: bold;
+		position:fixed;
+		top:0;
+		width:100%;
+		
+		a{
+			float: left;
+			font-size: 0.5rem;
+			color: #FFFFFF;
+			position: absolute;
+			left: 0.24rem;
+			top: 50%;
+			margin-top: -0.5rem;
+			
+		}
+	}
+	.comment{
+		padding-top: 1rem;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		padding-left: 0.24rem;
+		height: 0.8rem;
+		margin-top: 0.22rem;
+		background: #FFFFFF;
+span{
+	margin-right: 0.3rem;
+	width: 0.5rem;
+}
+		div{
+			padding-left: 0.36rem;
+			height: 0.44rem;
+			width: 13%;
+			line-height: 0.44rem;
+			text-indent: 5px;
+			&:nth-child(2){
+				background: url(../img/hua.png) no-repeat left center;
+				background-size:contain ;
+			}
+			&:nth-child(3){
+				background: url(../img/zuanshi.png) no-repeat left center;
+				background-size:contain ;
+			}
+			&:nth-child(4){
+				background: url(../img/jidan.png) no-repeat left center;
+				background-size:contain ;
+			}
+			&:nth-child(5){
+				background: url(../img/zan.png) no-repeat left center;
+				background-size:contain ;
+			}
+			&:nth-child(6){
+				background: url(../img/cai.png) no-repeat left center;
+				background-size:contain ;
+			}
+		}
+		
+	}
+	.exposure_object{
+		padding:  0 0.24rem;
+		margin-top: 0.2rem;
+		background: #FFFFFF;
+		.date{
+			line-height: 0.6rem;
+		}
+		img{
+			width: 0.75rem;
+			height: 0.75rem;
+			border-radius: 50%;
+		}
+		.exposure_objecttitle{
+			display: flex;
+			align-items: center;
+			font-size: 0.16rem;
+			font-weight: bold;
+			padding-bottom: 0.16rem;
+			border-bottom: 1px solid #f2efef;
+			.name{
+				margin-right: 1.15rem;
+				margin-left: 0.23rem;
+			}
+			em{
+				font-weight: bold;
+			}
+		}
+		.exposure_content{
+			padding-top: 0.25rem;
+			padding-bottom: 0.22rem;
+			p{
+				line-height: 0.3rem;
+				display: flex;
+				margin-top: 0.1rem;
+				span:first-child{
+					font-weight: bold;
+					font-size: 0.15rem;
+					width: 0.8rem;
+				}
+				span{
+					display: block;
+					
+				}
+			}
+		}
+		
+	}
+	.comment_content{
+		
+			margin-top: 0.22rem;
+			padding-bottom: 0.88rem;
+			&>div{
+				background: #FFFFFF;
+				margin-top: 0.11rem;
+					padding: 0 0.24rem;
+			}
+			h1{
+				line-height: 0.6rem;
+				border-bottom: 1px solid #f2efef;
+				background: #FFFFFF;
+					padding: 0 0.24rem;
+			}
+			p{
+				line-height: 0.6rem;
+				font-size: 0.22rem;
+			}
+			.comment_personl{
+				display: flex;
+				align-items: center;
+				.name{
+					margin-right: 1.15rem;
+					margin-left: 0.23rem;
+				}
+			}
+			.comment_show{
+				margin-top: 0.2rem;
+			}
+			img{
+				width: 0.75rem;
+				height: 0.75rem;
+				border-radius: 50%;
+			}
+		}
+		.my_commert{
+			height: 0.88rem;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+			background: #FFFFFF;
+			input[type="text"]{
+				width: 3.75rem;
+				line-height: 0.42rem;
+				border: 1px solid #e5e5e5;
+				border-radius:20px ;
+				text-indent: 10px;
+			}
+			input[type="submit"]{
+				width: 1.02rem;
+				line-height: 0.42rem;
+				height: 0.42rem;
+				background: #d71f21;
+				color: #FFFFFF;
+				text-align: center;
+				border: none;
+				border-radius:20px;
+			}
+		}
+}

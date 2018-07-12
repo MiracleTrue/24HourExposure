@@ -1,0 +1,123 @@
+.searchbox{
+	.head{
+		position: fixed;
+		top: 0;
+		width: 100%;
+		background: #000000;
+		font-size: 0.3rem;
+		z-index: 100;
+		color:#FFFFFF;
+		span{
+			margin-left: -0.8rem;
+		}
+		
+		a{
+			float: left;
+			color: #FFFFFF;
+			margin-left: 0.24rem;
+			font-size: 0.5rem;
+		}
+	}
+	margin-top: 1rem;
+	.head{
+		height: 1rem;
+		text-align: center;
+		line-height: 1rem;
+		
+	}
+		.exposure_list{
+			li{
+				
+				
+				& >div:first-child{
+					height: 0.24rem;
+					background-color: #fbfbfb;
+				}
+				& >div:first-child+div{
+					height: 0.12rem;
+					background-color: #f1f0f0;
+					position: relative;
+					img{
+						position: absolute;
+						left: 0.2rem;
+						width: 0.56rem;
+					}
+				}
+				& >div:last-child{
+					height: 1.35rem;
+					background: #FFFFFF;
+					.title{
+						padding-left: 0.9rem;
+						line-height: 0.6rem;
+						& span:first-child{
+							font-weight: bold;
+							font-size: 0.25rem;
+						}
+						& span{
+							font-size: 0.16rem;
+						}
+					}
+					.comment{
+						display: flex;
+						justify-content: flex-start;
+						align-items: center;
+						    padding-left: 0.9rem;
+	
+						div{
+							padding-left: 0.36rem;
+							height: 0.44rem;
+							width: 13%;
+							line-height: 0.44rem;
+							text-indent: 5px;
+							&:first-child{
+								background: url(../img/hua.png) no-repeat left center;
+								background-size:contain ;
+							}
+							&:nth-child(2){
+								background: url(../img/zuanshi.png) no-repeat left center;
+								background-size:contain ;
+							}
+							&:nth-child(3){
+								background: url(../img/jidan.png) no-repeat left center;
+								background-size:contain ;
+							}
+							&:nth-child(4){
+								background: url(../img/zan.png) no-repeat left center;
+								background-size:contain ;
+							}
+							&:nth-child(5){
+								background: url(../img/cai.png) no-repeat left center;
+								background-size:contain ;
+							}
+						}
+						
+					}
+				}
+				
+				
+			}
+		}
+		.page{
+			position: fixed;
+			bottom: 1rem;
+			width: 100%;
+			height: 1.15rem;
+			text-align: center;
+			margin-top: 0.4rem;
+			div{
+				margin:  auto;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				a{
+					display: inline-block;
+					padding:  0 0.2rem;
+					height: 0.38rem;
+					border: 1px solid #EEEEEE;
+				}
+			}
+			.active{
+				background: #dcdcdc;
+			}
+		}
+}

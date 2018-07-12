@@ -1,0 +1,108 @@
+.addbox{	
+	.header{
+		height: 1rem;
+		background: #000000;
+		text-align: center;
+		line-height: 1rem;
+		font-size: 0.28rem;
+		color: #FFFFFF;
+		font-weight: bold;
+		margin-bottom:0.6rem;
+		position: relative;
+		span{
+			margin-left: -0.5rem;
+		}
+		.goback{
+			float: left;
+			margin-left: 0.24rem;
+			font-size: 0.5rem;
+			color: #FFFFFF;
+		}
+		.add{
+			float: right;
+			margin-right: 0.24rem;
+			img{
+				width: 0.4rem;
+			}
+		}
+	}
+	p{
+		line-height: 0.8rem;
+		display: flex;
+		align-items: center;
+		font-size: 0.18rem;
+		justify-content: center;
+		input,select{
+			width: 3.7rem;
+			height: 0.5rem;
+			border: 1px solid #e5e5e5;
+			text-indent: 0.1rem;
+		}
+		textarea{
+			width: 3.7rem;
+			height: 2rem;
+			text-indent: 0.2rem;
+			border: 1px solid #e5e5e5;
+		}
+		span{
+			width: 1.3rem;
+		}
+	}
+	.nextstep{
+		margin-top: 0.7rem;
+		display: block;
+		width: 1.4rem;
+		height: 0.5rem;
+		background: #d71f21;
+		color: #FFFFFF;
+		line-height: 0.5rem;
+		font-size: 0.18rem;
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+		border-radius: 20px;
+	}
+	.content{
+		margin-top: 0.2rem;
+		
+	}
+	.comment{
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		padding-left: 0.9rem;
+		margin-top: 0.3rem;
+
+		div{
+			padding-left: 0.36rem;
+			height: 0.44rem;
+			width: 13%;
+			line-height: 0.44rem;
+			text-indent: 5px;
+			&:first-child{
+				background: url(../img/hua.png) no-repeat left center;
+				background-size:contain ;
+			}
+			&:nth-child(2){
+				background: url(../img/zuanshi.png) no-repeat left center;
+				background-size:contain ;
+			}
+			&:nth-child(3){
+				background: url(../img/jidan.png) no-repeat left center;
+				background-size:contain ;
+			}
+			&:nth-child(4){
+				background: url(../img/zan.png) no-repeat left center;
+				background-size:contain ;
+			}
+			&:nth-child(5){
+				background: url(../img/cai.png) no-repeat left center;
+				background-size:contain ;
+			}
+		}
+		
+	}
+	input[type="submit"]{
+		border: none;
+	}
+}
