@@ -2,13 +2,14 @@
 
 namespace App\Admin\Controllers;
 
+use App\Handlers\ImageUploadHandler;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class WangEditorController extends Controller
 {
 
-    public function images(Request $request)
+    public function images(Request $request, ImageUploadHandler $uploader)
     {
         $data = $this->validate($request, [
             'images.*' => 'required|image|mimes:jpeg,png,gif',
@@ -19,7 +20,7 @@ class WangEditorController extends Controller
         $paths = array();
         foreach ($data['images'] as $item)
         {
-            $paths[] = \Storage::url(\Storage::disk('public')->putFile('images', $item));
+            $paths[] = \Storage::url($uploader->uploadOriginal($item));
         }
 
         return response()->json([

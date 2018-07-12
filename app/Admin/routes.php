@@ -32,6 +32,9 @@ Route::group([
     $router->get('exposure_comments/{exposure}', 'ExposureCommentsController@index')->name('exposure_comments.index');
 
 
+    $router->resource('gifts', GiftController::class);
+
+
 //    $router->resource('example', ExampleController::class);
 //    $router->get('example', 'ExampleController@index')->name('example.index');
 //    $router->get('example/{id}', 'ExampleController@show')->name('example.show');

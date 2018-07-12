@@ -10,4 +10,8 @@ class Gift extends Model
         'title', 'image', 'price', 'sort'
     ];
 
+    public function order_items()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
 }

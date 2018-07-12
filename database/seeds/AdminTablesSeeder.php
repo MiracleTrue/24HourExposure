@@ -45,6 +45,12 @@ class AdminTablesSeeder extends Seeder
                 'http_method' => '',
                 'http_path' => "/exposures",
             ],
+            [
+                'name' => '礼物管理',
+                'slug' => 'gifts',
+                'http_method' => '',
+                'http_path' => "/gifts",
+            ],
         ];
 
     /*自定义添加的菜单*/
@@ -84,6 +90,13 @@ class AdminTablesSeeder extends Seeder
                 'title' => '曝光管理',
                 'icon' => 'fa-list',
                 'uri' => '/exposures',
+            ],
+            [
+                'parent_id' => 0,
+                'order' => 1,
+                'title' => '礼物管理',
+                'icon' => 'fa-list',
+                'uri' => '/gifts',
             ],
 
         ];
