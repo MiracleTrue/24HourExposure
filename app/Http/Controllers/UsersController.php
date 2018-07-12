@@ -30,7 +30,7 @@ class UsersController extends Controller
     {
         $this->authorize('update', $user);
 
-        $data = $request->only('name','avatar');
+        $data = $request->only('name', 'avatar');
 
 
         if ($request->hasFile('avatar'))
@@ -42,6 +42,6 @@ class UsersController extends Controller
 
         return [];
 
-//        return redirect()->route('users.show', $user->id)->with('success', '个人资料更新成功！');
+//        return redirect()->route('users.edit', $user->id)->with('success', '个人资料更新成功！');
     }
 }

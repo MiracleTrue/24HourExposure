@@ -30,5 +30,7 @@ class DatabaseSeeder extends Seeder
         //礼物
         $this->call(GiftsSeeder::class);
 
+        //订单
+        $this->call(OrdersSeeder::class);
     }
 }

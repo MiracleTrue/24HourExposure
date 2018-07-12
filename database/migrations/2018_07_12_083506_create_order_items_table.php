@@ -24,7 +24,7 @@ class CreateOrderItemsTable extends Migration
             $table->unsignedInteger('number')->comment('数量');
 
             $table->decimal('item_price')->comment('金额');
-            $table->text('snapshot')->comment('JSON格式商品快照');
+            $table->text('snapshot')->nullable()->comment('JSON格式商品快照');
         });
     }
 

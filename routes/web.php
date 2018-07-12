@@ -19,6 +19,8 @@ Route::get('news/{news}', 'NewsController@show')->name('news.show');//资讯详�
 
 
 /*曝光*/
+Route::get('exposures', 'ExposuresController@index')->name('exposures.index');//曝光台
+
 
 
 
