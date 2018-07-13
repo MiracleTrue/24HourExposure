@@ -41,7 +41,7 @@ class UsersController extends Controller
         $user->update($data);
 
         return [
-            'data' => $data,
+            'user' => User::find($user->id),
         ];
 
 //        return redirect()->route('users.edit', $user->id)->with('success', '个人资料更新成功！');
