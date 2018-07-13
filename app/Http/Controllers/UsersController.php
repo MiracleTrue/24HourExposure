@@ -38,7 +38,7 @@ class UsersController extends Controller
             $data['avatar'] = $uploader->uploadOriginal($request->avatar);
         }
 
-        $data = $user->update($data);
+        $user->update($data);
 
         return [
             'data' => $data,
