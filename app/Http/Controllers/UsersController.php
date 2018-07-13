@@ -38,9 +38,11 @@ class UsersController extends Controller
             $data['avatar'] = $uploader->uploadOriginal($request->avatar);
         }
 
-        $user->update($data);
+        $user = $user->update($data);
 
-        return [];
+        return [
+            'user' => $user,
+        ];
 
 //        return redirect()->route('users.edit', $user->id)->with('success', '个人资料更新成功！');
     }
