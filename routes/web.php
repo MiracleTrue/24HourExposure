@@ -7,8 +7,6 @@ Route::get('test', function () {
 
 
 
-
-
 Auth::routes();
 Route::redirect('/', '/users')->name('root');
 //Route::get('/', 'PagesController@root')->name('root');
@@ -42,4 +40,10 @@ Route::group(['middleware' => 'auth'], function () {
     /*评论*/
     Route::post('exposure_comments', 'ExposureCommentsController@store')->name('exposure_comments.store');//曝光评论
 
+    /*支付*/
+    Route::post('payment/gift/alipay', 'PaymentController@giftByAlipay')->name('payment.gift.alipay');/*赠送礼物*/
+
 });
+
+//支付回调
+Route::post('payment/gift/alipay_notify', 'PaymentController@giftAlipayNotify')->name('payment.gift.alipay_notify');

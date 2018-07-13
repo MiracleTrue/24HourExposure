@@ -26,7 +26,6 @@ class CreateOrdersTable extends Migration
             $table->decimal('total_amount')->comment('订单总金额');
             $table->dateTime('paid_at')->nullable()->comment('支付时间');
             $table->string('payment_method')->nullable()->comment('支付方式');
-            $table->string('payment_title')->nullable()->comment('支付标题');
             $table->string('payment_no')->nullable()->comment('支付平台订单号');
             $table->boolean('closed')->default(false)->comment('订单是否已关闭');
             $table->text('extra')->nullable()->comment('JSON格式其他额外数据');

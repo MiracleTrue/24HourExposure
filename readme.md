@@ -90,6 +90,11 @@ php artisan config:cache
 ###### 腾讯云短信
 - QCLOUD_SDK_APP_ID= `//SDK APP ID`
 - QCLOUD_APP_KEY= `//APP KEY`
+
+###### 支付宝 配置
+- ALI_APP_ID=
+- ALI_PUBLIC_KEY=
+- ALI_PRIVATE_KEY=
 ## Composer 已安装插件:
 ###### 安装 Laravel-ide-helper IDE & 模型注释助手
 ```
@@ -166,21 +171,10 @@ config/app.php   $aliases
 'Image' => Intervention\Image\Facades\Image::class
 ```
 
-##
-## Composer 常用插件:
-
-###### Redis 队列驱动器依赖
-```
-composer require "predis/predis:~1.0"
-
-//创建队列失败表
-php artisan queue:failed-table
-```
-
 ###### Horizon 是 Laravel 生态圈里的一员，为 Laravel Redis 队列提供了一个漂亮的仪表板，允许我们很方便地查看和管理 Redis 队列任务执行的情况。
 ```
 使用 Composer 安装：
-composer require "laravel/horizon:~1.0"
+composer require laravel/horizon
 安装完成后，使用 vendor:publish Artisan 命令发布相关文件：
 php artisan vendor:publish --provider="Laravel\Horizon\HorizonServiceProvider"
 分别是配置文件 config/horizon.php 和存放在 public/vendor/horizon 文件夹中的 CSS 、JS 等页面资源文件。
@@ -216,6 +210,17 @@ WECHAT_KEY=
             'total_amount' => $order->total_amount, // 订单金额，单位元，支持小数点后两位
             'subject' => '支付 Laravel Shop 的订单：' . $order->no, // 订单标题
         ]);
+```
+
+##
+## Composer 常用插件:
+
+###### Redis 队列驱动器依赖
+```
+composer require "predis/predis:~1.0"
+
+//创建队列失败表
+php artisan queue:failed-table
 ```
 
 ###### 安装 DingoAPI

@@ -20,7 +20,6 @@ $factory->define(App\Models\Order::class, function (Faker $faker) {
         'total_amount' => $faker->randomFloat(2, 10, 200),
         'paid_at' => $now,
         'payment_method' => 'alipay',
-        'payment_title' => '支付测试',
         'payment_no' => $faker->randomNumber(8),
         'closed' => false,
         'created_at' => $created_at,

@@ -8,6 +8,7 @@ class OrderItem extends Model
 {
     protected $fillable = [
 
+        'number', 'item_price'
 
     ];
 

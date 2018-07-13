@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+    const PAYMENT_METHOD_ALIPAY = 'alipay';
+
+    public static $paymentMethodMap = [
+        self::PAYMENT_METHOD_ALIPAY => '支付宝',
+    ];
+
     protected $fillable = [
         'no',
         'total_amount',
@@ -42,6 +48,11 @@ class Order extends Model
                 }
             }
         });
+    }
+
+    public function exposure()
+    {
+        return $this->belongsTo(Exposure::class);
     }
 
     public function user()
