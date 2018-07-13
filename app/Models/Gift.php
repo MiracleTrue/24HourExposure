@@ -28,13 +28,19 @@ class Gift extends Model
         'deleted' => GiftObserver::class,
     ];
 
+    //默认排序
+    public function scopeDefaultSort($query)
+    {
+        return $query->orderBy('created_at', 'desc');
+    }
+
 
     public static function getAllCached()
     {
         // 尝试从缓存中取出 cache_key 对应的数据。如果能取到，便直接返回数据。
         // 否则运行匿名函数中的代码来取出 gifts 表中所有的数据，返回的同时做了缓存。
         return Cache::remember(self::$cache_key, self::$cache_expire_in_minutes, function () {
-            return Gift::all();
+            return Gift::defaultSort()->get();
         });
     }
 

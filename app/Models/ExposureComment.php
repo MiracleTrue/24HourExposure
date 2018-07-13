@@ -10,6 +10,12 @@ class ExposureComment extends Model
         'exposure_id', 'content'
     ];
 
+    //默认排序
+    public function scopeDefaultSort($query)
+    {
+        return $query->orderBy('created_at', 'desc');
+    }
+
     public function exposure()
     {
         return $this->belongsTo(Exposure::class);

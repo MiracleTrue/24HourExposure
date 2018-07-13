@@ -6,7 +6,8 @@
 
 
 
-    {{dump($news)}}
+    {{dump($exposure)}}
+    {{dump($comments)}}
 
 
 @stop

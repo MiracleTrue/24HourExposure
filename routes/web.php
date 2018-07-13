@@ -5,6 +5,10 @@ Route::get('test', function () {
     dd(session('LBS'));
 });
 
+
+
+
+
 Auth::routes();
 Route::redirect('/', '/users')->name('root');
 //Route::get('/', 'PagesController@root')->name('root');
@@ -20,8 +24,7 @@ Route::get('news/{news}', 'NewsController@show')->name('news.show');//资讯详�
 
 /*曝光*/
 Route::get('exposures', 'ExposuresController@index')->name('exposures.index');//曝光台
-
-
+Route::get('exposures/{exposure}', 'ExposuresController@show')->name('exposures.show');//曝光详情
 
 
 //需要登录的路由
@@ -33,10 +36,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('users/{user}', 'UsersController@update')->name('users.update');//修改提交
 
 
-
-
-
     /*曝光*/
 
+
+    /*评论*/
+    Route::post('exposure_comments', 'ExposureCommentsController@store')->name('exposure_comments.store');//曝光评论
 
 });

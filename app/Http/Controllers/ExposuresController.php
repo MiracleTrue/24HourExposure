@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Exposure;
 use App\Models\ExposureCategory;
+use App\Models\ExposureComment;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class ExposuresController extends Controller
 {
     //
-    public function index(Request $request, Exposure $exposure, ExposureCategory $category)
+    public function index(Request $request, Exposure $exposure, ExposureCategory $category, News $news)
     {
         $lbs = $request->session()->get('LBS');
         $categories = $category->defaultSort()->get();
+        $today_news = $news->defaultSort()->limit(2)->get();
 
-        $builder = $exposure->where('location_id', $lbs->id)->with(['order_items',])->defaultSort();
+        $builder = $exposure->where('location_id', $lbs->id)->with(['order_items'])->defaultSort();
 
         // 是否有提交 category 参数
         if ($_category = $request->input('category', ''))
@@ -54,11 +57,28 @@ class ExposuresController extends Controller
             'categories' => $categories,
             'exposures' => $exposures,
             'lbs' => $lbs,
+            'today_news' => $today_news,
             'filters' => [
                 'category' => $_category,
                 'search' => $search,
                 'time' => $soft,
             ]
         ]);
+    }
+
+
+    public function show(Exposure $exposure)
+    {
+
+        $exposure = $exposure->load([ 'category', 'user']);
+
+        $comments = $exposure->comments()->defaultSort()->get();
+        $comments->load(['user']);
+
+        return view('exposures.show', [
+            'exposure' => $exposure,
+            'comments' => $comments,
+        ]);
+
     }
 }
