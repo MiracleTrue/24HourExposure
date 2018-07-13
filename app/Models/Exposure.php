@@ -44,15 +44,21 @@ class Exposure extends Model
         return $this->hasMany(Order::class);
     }
 
-    public function getGiftsAttribute(Gift $gifts)
+    public function getGiftsAttribute()
     {
-        return $this->order_items->groupBy('gift_id')->transform(function ($item, $key) use ($gifts) {
-            $a = $gifts->get();
-            dd($a);
-            $gift = $item->first()->gift;
-            $gift->sum = $item->sum('number');
-            return $gift;
+        $all_gifts = Gift::getAllCached();
+        $all_gifts->transform(function ($item) {
+            $item->sum = $this->order_items->where('gift_id', $item->id)->sum('number');
+            return $item;
         });
+
+        return $all_gifts;
+
+//        $gifts = $this->order_items->groupBy('gift_id')->transform(function ($item) {
+//            $gift = $item->first()->gift;
+//            $gift->sum = $item->sum('number');
+//            return $gift;
+//        });
     }
 
     public function order_items()

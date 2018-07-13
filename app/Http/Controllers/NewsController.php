@@ -31,8 +31,8 @@ class NewsController extends Controller
             });
         }
 
-        // 是否有提交 filter 参数
-        if ($time = $request->input('filter', ''))
+        // 是否有提交 time 参数
+        if ($time = $request->input('time', ''))
         {
             switch ($time)
             {
