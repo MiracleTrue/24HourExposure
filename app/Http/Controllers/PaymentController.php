@@ -97,7 +97,7 @@ class PaymentController extends Controller
 
 
         // 校验输入参数
-        $data = Pay::alipay($this->alipayConfig())->verify();
+        $data = Pay::alipay(self::alipayConfig())->verify();
 
         Log::error($data);
         exit();
