@@ -37,10 +37,13 @@ class NewsController extends Controller
             switch ($time)
             {
                 case '7_days':
+                    $builder->where('created_at', '>', now()->subDays(7));
                     break;
                 case 'last_month':
+                    $builder->where('created_at', '>', now()->subMonth());
                     break;
                 case 'half_year':
+                    $builder->where('created_at', '>', now()->subMonths(6));
                     break;
             }
         }
