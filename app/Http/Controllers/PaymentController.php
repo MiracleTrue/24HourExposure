@@ -87,10 +87,43 @@ class PaymentController extends Controller
     }
 
 
+    /**
+     * @param Request $request
+     * @return string|\Symfony\Component\HttpFoundation\Response
+     * @throws \Yansongda\Pay\Exceptions\InvalidSignException
+     */
     public function giftAlipayNotify(Request $request)
     {
-        Log::error($request->all());
 
+
+        // 校验输入参数
+        $data = Pay::alipay($this->alipayConfig())->verify();
+
+        Log::error($data);
+        exit();
+        // $data->out_trade_no 拿到订单流水号，并在数据库中查询
+        $order = Order::where('no', $data->out_trade_no)->first();
+        // 正常来说不太可能出现支付了一笔不存在的订单，这个判断只是加强系统健壮性。
+        if (!$order)
+        {
+            return 'fail';
+        }
+        // 如果这笔订单的状态已经是已支付
+        if ($order->paid_at)
+        {
+            // 返回数据给支付宝
+            return Pay::alipay($this->alipayConfig())->success();
+        }
+
+        $order->update([
+            'paid_at' => now(), // 支付时间
+            'payment_method' => 'alipay', // 支付方式
+            'payment_no' => $data->trade_no, // 支付宝订单号
+        ]);
+
+        $this->afterPaid($order);
+
+        return Pay::alipay($this->alipayConfig())->success();
         
     }
 
