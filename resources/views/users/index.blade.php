@@ -5,7 +5,7 @@
 @section('content')
 
 
-    {{--{{dd($user)}}--}}
+    <!--{{dump($user)}}-->
 
 
     <!--<a href="{{route('users.edit',$user->id)}}">修改资料</a>-->
@@ -16,9 +16,9 @@
 			<span>个人中心</span>
 		</div>
 		<div class="personalinfo">
-			<a style="border: none;" href="{{route('users.edit',$user->id)}}"><img src="assets/img/touxiang.png" /></a>
-			<p class="nickname">爱吃的瘦子</p>
-			<p class="name">13888888888</p>
+			<a style="border: none;" href="{{route('users.edit',$user->id)}}"><img src="{{$user->avatar_url}}" /></a>
+			<p class="nickname">{{$user->name}}</p>
+			<p class="name">{{$user->phone}}</p>
 		</div>
 		<p class="baoguang">
 			<a href="my-exposure.php">我发布过的曝光 ></a>

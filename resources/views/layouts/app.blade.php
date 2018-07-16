@@ -12,7 +12,15 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('web/css/reset.css')}}" />			
 	<link rel="stylesheet/less" type="text/css" href="{{asset('web/less/login.less')}}">
 	<link rel="stylesheet/less" type="text/css" href="{{asset('web/less/personl.less')}}">
-	<link rel="stylesheet/less" type="text/css" href="{{asset('web/less/personl.less')}}">
+	<link rel="stylesheet/less" type="text/css" href="{{asset('web/less/add.less')}}">
+	<link rel="stylesheet/less" type="text/css" href="{{asset('web/less/exposure-details.less')}}">
+	<link rel="stylesheet/less" type="text/css" href="{{asset('web/less/footer.less')}}">
+	<link rel="stylesheet/less" type="text/css" href="{{asset('web/less/header.less')}}">
+	<link rel="stylesheet/less" type="text/css" href="{{asset('web/less/home.less')}}">
+	<link rel="stylesheet/less" type="text/css" href="{{asset('web/less/my-exposure.less')}}">
+	<link rel="stylesheet/less" type="text/css" href="{{asset('web/less/news.less')}}">
+	<link rel="stylesheet/less" type="text/css" href="{{asset('web/less/newsshow.less')}}">
+	<link rel="stylesheet/less" type="text/css" href="{{asset('web/less/search.less')}}">
 	<script src="{{asset('web/js/jquery-1.8.3.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('web/js/rem.js')}}"></script>
 	<script type="text/javascript" src="{{asset('web/js/less.min.js')}}"></script>
