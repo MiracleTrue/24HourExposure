@@ -14,6 +14,7 @@ $factory->define(App\Models\News::class, function (Faker $faker) {
     return [
         'title' => $faker->company,
         'content' => $faker->text,
+        'image' => $faker->imageUrl(),
         'created_at' => $created_at,
         'updated_at' => $updated_at,
     ];

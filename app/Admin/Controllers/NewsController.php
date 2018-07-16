@@ -69,6 +69,7 @@ class NewsController extends Controller
 
             $grid->id('ID')->sortable();
             $grid->category()->name('分类');
+            $grid->image('缩略图')->image('', 60);
             $grid->title('标题');
 
             $grid->created_at('创建时间')->sortable();
@@ -88,13 +89,11 @@ class NewsController extends Controller
             $categories = NewsCategory::all()->mapWithKeys(function ($item) {
                 return [$item['id'] => $item['name']];
             });
-//            $categories = NewsCategory::all()->keyBy('id')->pluck('name');
-
-//            dd($categories);
 
             $form->display('id', 'ID');
 
             $form->select('category_id', '分类')->options($categories)->rules('required');
+            $form->image('image', '缩略图')->move('original/' . date('Ym', now()->timestamp))->rules('required|image');
             $form->text('title', '标题')->rules('required');
             $form->editor('content', '内容')->rules('required');
 

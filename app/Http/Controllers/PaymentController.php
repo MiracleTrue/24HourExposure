@@ -111,20 +111,18 @@ class PaymentController extends Controller
         // 如果这笔订单的状态已经是已支付
         if ($order->paid_at)
         {
-            // 返回数据给支付宝
             return Pay::alipay($this->alipayConfig())->success();
         }
 
         $order->update([
             'paid_at' => now(), // 支付时间
-            'payment_method' => 'alipay', // 支付方式
+            'payment_method' => Order::PAYMENT_METHOD_ALIPAY, // 支付方式
             'payment_no' => $data->trade_no, // 支付宝订单号
         ]);
 
-        $this->afterPaid($order);
+//        event(new OrderPaid($order));
 
         return Pay::alipay($this->alipayConfig())->success();
-        
     }
 
 }

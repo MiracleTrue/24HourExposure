@@ -8,7 +8,6 @@ class CreateNewsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
      * @return void
      */
     public function up()
@@ -19,6 +18,8 @@ class CreateNewsTable extends Migration
             $table->unsignedInteger('category_id');
             $table->foreign('category_id')->references('id')->on('news_categories')->onDelete('cascade');
 
+            $table->string('image')->comment('缩略图');
+
             $table->string('title')->index()->comment('标题');
             $table->text('content')->comment('内容');
 
@@ -28,7 +29,6 @@ class CreateNewsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
      * @return void
      */
     public function down()
