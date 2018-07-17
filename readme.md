@@ -37,8 +37,8 @@ php artisan admin:make UsersController --model=App\\Models\\User
 php artisan db:seed --class=AdminTablesSeeder
 ```
 ##### 服务器后台运行的服务:
-- `npm run watch-poll &`
-- `php artisan horizon &`
+- `npm run watch-poll`
+- `php artisan horizon`
 
 ## 常用 artisan 命令
 ```
@@ -68,6 +68,9 @@ php artisan make:notification OrderPaidNotification
 
 //创建授权策略类
 php artisan make:policy {模型名称}Policy   //OrderPolicy
+
+//创建队列失败表
+php artisan queue:failed-table
 
 //将所有配置文件 publish 出来
 php artisan vendor:publish
