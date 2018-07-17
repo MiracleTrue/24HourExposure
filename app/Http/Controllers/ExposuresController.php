@@ -17,7 +17,7 @@ class ExposuresController extends Controller
         $categories = $category->defaultSort()->get();
         $today_news = $news->defaultSort()->limit(2)->get();
 
-        $builder = $exposure->where('location_id', $lbs->id)->with(['order_items'])->defaultSort();
+        $builder = $exposure->where('location_id', $lbs->id)->with(['order_items', 'category'])->defaultSort();
 
         // 是否有提交 category 参数
         if ($_category = $request->input('category', ''))
@@ -70,7 +70,7 @@ class ExposuresController extends Controller
     public function show(Exposure $exposure)
     {
 
-        $exposure = $exposure->load([ 'category', 'user']);
+        $exposure = $exposure->load(['category', 'user']);
 
         $comments = $exposure->comments()->defaultSort()->get();
         $comments->load(['user']);
