@@ -28,7 +28,8 @@ class CreateExposuresTable extends Migration
             $table->string('title')->comment('标题');
             $table->text('content')->comment('内容');
 
-            $table->unsignedDecimal('gift_amount')->index()->comment('礼物总金额');
+            $table->unsignedDecimal('gift_amount')->default(0)->index()->comment('礼物总金额');
+            $table->unsignedInteger('comment_count')->default(0)->index()->comment('评论数');
 
             $table->timestamps();
         });

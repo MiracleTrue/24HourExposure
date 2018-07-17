@@ -17,9 +17,14 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
 
         /*订单支付成功事件*/
-        OrderPaid::class => [
-            UpdateExposureGiftAmount::class,
-            UpdateUserGiftAmount::class
+        'App\Events\OrderPaid' => [
+            'App\Listeners\UpdateExposureGiftAmount',
+            'App\Listeners\UpdateUserGiftAmount',
+        ],
+
+        /*评论成功事件*/
+        'App\Events\ExposureCommented' => [
+            'App\Listeners\UpdateExposureCommentCount',
         ],
 
 

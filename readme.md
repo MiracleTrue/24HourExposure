@@ -53,6 +53,10 @@ php artisan make:request {验证器名称}Request
 //创建任务
 php artisan make:job {任务名称}
 
+//快速创建事件与绑定监听器
+app/Providers/EventServiceProvider.php  //listen 数组包含所有的事件（键）以及事件对应的监听器（值）来注册所有的事件监听器
+php artisan event:generate
+
 //创建事件
 php artisan make:event {事件名称}
 

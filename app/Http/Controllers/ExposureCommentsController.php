@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ExposureCommented;
 use App\Http\Requests\ExposureCommentRequest;
 use App\Models\ExposureComment;
 
@@ -14,6 +15,8 @@ class ExposureCommentsController extends Controller
         $exposureComment->exposure()->associate($request->input('exposure_id'));
         $exposureComment->content = $request->input('content');
         $exposureComment->save();
+
+        event(new ExposureCommented($exposureComment));
 
         return [];
     }

@@ -21,6 +21,7 @@ $factory->define(App\Models\Exposure::class, function (Faker $faker) {
         'title' => $faker->company,
         'content' => $faker->text,
         'gift_amount' => 0,
+        'comment_count' => 0,
         'created_at' => $created_at,
         'updated_at' => $updated_at,
     ];
