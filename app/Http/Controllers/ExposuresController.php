@@ -36,9 +36,9 @@ class ExposuresController extends Controller
         }
 
         // 是否有提交 sort 参数
-        if ($soft = $request->input('sort', ''))
+        if ($sort = $request->input('sort', ''))
         {
-            switch ($soft)
+            switch ($sort)
             {
                 case 'created_time_desc':
                     $builder->orderBy('created_at', 'desc');
@@ -65,7 +65,7 @@ class ExposuresController extends Controller
             'filters' => [
                 'category' => $_category,
                 'search' => $search,
-                'time' => $soft,
+                'sort' => $sort,
             ]
         ]);
     }
