@@ -12,7 +12,7 @@
 
 	<div class="personlbox">
 		<div class="header">
-			<a href="javascript:history.go(-1)" class="goback"><</a>
+			<a href="javascript:history.go(-1)" class="goback"></a>
 			<span>个人中心</span>
 		</div>
 		<div class="personalinfo">
@@ -21,8 +21,8 @@
 			<p class="name">{{$user->phone}}</p>
 		</div>
 		<p class="baoguang">
-			<a href="my-exposure.php">我发布过的曝光 ></a>
-			<a href="my-exposure.php">我评论过的曝光 ></a>
+			<a href="{{route('users.released_exposures')}}">我发布过的曝光 ></a>
+			<a href="{{route('users.commented_exposures')}}">我评论过的曝光 ></a>
 		</p>
 		<p class="phone">客服电话：4008001818</p>
 	</div>

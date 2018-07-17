@@ -4,32 +4,7 @@
 
 @section('content')
 <style>
-	.pagination {
-	    height: 1.15rem;
-	    text-align: center;
-	    margin-top: 0.4rem;
-	    position: fixed;
-	    width: 100%;
-	    bottom: 0.94rem;
-	    background: #FFFFFF;
-		display: flex;
-		justify-content: center;
-	}
-	 .pagination  a {
-    display: inline-block;
-    width: 0.4rem;
-    height: 0.5rem;
-    line-height: 0.5rem;
-}
-	 .pagination .active {
-    background: #dcdcdc;
-}
-.pagination li{
-	    width: 0.55rem;
-    height: 0.5rem;
-	line-height: 0.5rem;
-	border: 1px solid #EEEEEE;
-}
+
 .selcct >div {
 	display: flex;
 	justify-content: center;

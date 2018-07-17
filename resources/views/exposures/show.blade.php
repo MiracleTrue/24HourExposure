@@ -3,14 +3,14 @@
 @section('title',' 的个人中心')
 
 @section('content')
-{{dump($exposure)}}
-    {{dump($comments)}}
+<!--{{dump($exposure)}}
+    {{dump($comments)}}-->
 
 		
 		<form class="payform" action="{{route('payment.gift.alipay')}}" method="POST">
 			{{csrf_field()}}
 
-		<input type="hidden" name="exposure_id" value="">
+		<input type="hidden" name="exposure_id" value="{{$exposure->id}}">
 		<input type="hidden" name="gifts" value='[{"id":1,"number":1}]'>
 
 		<input type="submit" value="支付">
@@ -26,9 +26,8 @@
 	<div class="comment">
 	<span>{{$exposure->category->name}}</span>
 		@foreach($exposure->gifts as $gift)
-						
 
-		<div class="pay" exposure_id="{{$gift->id}}" title="{{$gift->title}}"><img  src="{{$gift->image_url}}">{{$gift->sum}}</div>
+		<div class="pay" data-id="{{$gift->id}}" title="{{$gift->title}}"><img src="{{$gift->image_url}}">{{$gift->sum}}</div>
 	@endforeach
 	</div>
 	<!--曝光对象-->
@@ -85,7 +84,7 @@
 				var myJson=new Array();
 				var obj=new Object();
 
-				obj.id=$(index).attr('exposure_id');
+				obj.id=$(index).attr('data-id');
 
 				obj.number=1;
 
@@ -94,13 +93,10 @@
 				
 				
 				var strjson = $.toJSON(myJson);
-			
-				
-				
-				$("input[name='exposure_id']").val($(index).attr("exposure_id"));
+				console.log(strjson)
 				$("input[name='gifts']").val(strjson);
 				
-				 $('.payform').submit(); 
+				  $('.payform').submit();  
 			})
 		})
 		
