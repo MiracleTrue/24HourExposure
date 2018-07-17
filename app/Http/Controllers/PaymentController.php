@@ -99,8 +99,7 @@ class PaymentController extends Controller
         // 校验输入参数
         $data = Pay::alipay(self::alipayConfig())->verify();
 
-        Log::error($data);
-        exit();
+
         // $data->out_trade_no 拿到订单流水号，并在数据库中查询
         $order = Order::where('no', $data->out_trade_no)->first();
         // 正常来说不太可能出现支付了一笔不存在的订单，这个判断只是加强系统健壮性。
