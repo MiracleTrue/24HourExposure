@@ -43,7 +43,7 @@ class ExposureCommentsController extends Controller
             $grid->user()->avatar('头像')->image('', 40);
             $grid->user()->name('评论人');
             $grid->content('评论内容');
-            $grid->created_at('评论时间');
+            $grid->created_at('评论时间')->sortable();
 
 
             // 不在页面显示 `新建` 按钮，因为我们不需要在后台新建用户

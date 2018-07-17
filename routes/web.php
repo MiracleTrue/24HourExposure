@@ -34,6 +34,8 @@ Route::get('exposures/{exposure}', 'ExposuresController@show')->name('exposures.
 Route::group(['middleware' => 'auth'], function () {
 
     /*用户*/
+    Route::get('users/released_exposures', 'UsersController@releasedExposures')->name('users.released_exposures');//我发布的曝光
+    Route::get('users/commented_exposures', 'UsersController@commentedExposures')->name('users.commented_exposures');//我评论的曝光
     Route::get('users', 'UsersController@index')->name('users.index');//用户中心
     Route::get('users/{user}/edit', 'UsersController@edit')->name('users.edit');//修改资料
     Route::put('users/{user}', 'UsersController@update')->name('users.update');//修改提交

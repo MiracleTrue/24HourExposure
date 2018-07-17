@@ -32,4 +32,14 @@ class User extends Authenticatable
         }
         return \Storage::disk('public')->url($this->attributes['avatar']);
     }
+
+    public function exposures()
+    {
+        return $this->hasMany(Exposure::class);
+    }
+
+    public function exposure_comments()
+    {
+        return $this->hasMany(Exposure::class);
+    }
 }

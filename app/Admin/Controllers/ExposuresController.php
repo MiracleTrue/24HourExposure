@@ -86,6 +86,8 @@ class ExposuresController extends Controller
             $grid->name('曝光对象');
             $grid->title('标题');
             $grid->gift_amount('礼物总金额')->sortable();
+            $grid->comment_count('评论数')->sortable();
+
             $grid->created_at('创建时间')->sortable();
 
 
@@ -128,6 +130,7 @@ class ExposuresController extends Controller
                 return "$value[name] (手机号:$value[phone]) (身份证:$value[id_card])";
             });
             $form->display('gift_amount', '礼物总金额');
+            $form->display('comment_count', '评论数');
             $form->display('name', '曝光对象');
             $form->display('title', '标题');
             $form->display('content', '内容');

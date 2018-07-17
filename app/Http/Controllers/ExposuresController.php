@@ -41,12 +41,16 @@ class ExposuresController extends Controller
             switch ($soft)
             {
                 case 'created_time_desc':
+                    $builder->orderBy('created_at', 'desc');
                     break;
                 case 'created_time_asc':
+                    $builder->orderBy('created_at', 'asc');
                     break;
-                case 'gifts_money_more':
+                case 'gift_amount_more':
+                    $builder->orderBy('gift_amount', 'desc');
                     break;
-                case 'gifts_money_less':
+                case 'gift_amount_less':
+                    $builder->orderBy('gift_amount', 'asc');
                     break;
             }
         }

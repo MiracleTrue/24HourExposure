@@ -53,12 +53,6 @@ class Exposure extends Model
         });
 
         return $all_gifts;
-
-//        $gifts = $this->order_items->groupBy('gift_id')->transform(function ($item) {
-//            $gift = $item->first()->gift;
-//            $gift->sum = $item->sum('number');
-//            return $gift;
-//        });
     }
 
     public function order_items()
