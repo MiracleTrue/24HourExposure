@@ -11,14 +11,7 @@
    {{dump($lbs)}}-->
 
     @include('common.error')
-   <form action="{{route('payment.gift.alipay')}}" method="POST">
-        {{csrf_field()}}
 
-        <input type="hidden" name="exposure_id" value="8">
-        <input type="hidden" name="gifts" value='[{"id":1,"number":1},{"id":3,"number":2}]'>
-
-        <input type="submit" value="OK">
-    </form>
 <header><span>曝光台</span> <a href="../add-exposure.php"></a></header>
 <div class="homebox">
 	<div class="location">
@@ -34,6 +27,18 @@
 		</div>
 		
 	</div>
+
+	<form action="{{route('payment.gift.alipay')}}" method="POST">
+		{{csrf_field()}}
+
+		<input type="hidden" name="exposure_id" value="8">
+		<input type="hidden" name="gifts" value='[{"id":1,"number":1},{"id":3,"number":2}]'>
+
+		<input type="submit" value="支付">
+	</form>
+
+
+
 	<!--分类-->
 	<div class="classification">
 		<span>分类：</span>
@@ -101,6 +106,9 @@
 		</div>
 	</div>
 </div>
+
+
+
 <!--<script type="text/javascript" src="https://3gimg.qq.com/lightmap/components/geolocation/geolocation.min.js"></script>
 <script>
 	var geolocation = new qq.maps.Geolocation("OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77", "myapp");
