@@ -53,4 +53,4 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 //支付回调
-Route::post('payment/gift/alipay_notify', 'PaymentController@giftAlipayNotify')->name('payment.gift.alipay_notify');
+Route::post('payment/gift/alipay_notify', 'PaymentController@giftAlipayNotify')->name('payment.gift.alipay_notify');/*赠送礼物支付宝回调*/

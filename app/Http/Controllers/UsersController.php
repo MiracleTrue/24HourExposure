@@ -54,7 +54,7 @@ class UsersController extends Controller
     {
         $categories = $category->defaultSort()->get();
 
-        $builder = $request->user()->exposures()->with(['order_items', 'category'])->defaultSort();
+        $builder = $request->user()->exposures()->with(['order_items', 'category', 'user'])->defaultSort();
 
         // 是否有提交 category 参数
         if ($_category = $request->input('category', ''))
@@ -109,7 +109,7 @@ class UsersController extends Controller
 
         $exposure_ids = ExposureComment::where('user_id', $request->user()->id)->get()->pluck('exposure_id')->unique()->toArray();
 
-        $builder = $exposure->whereIn('id', $exposure_ids)->with(['order_items', 'category'])->defaultSort();
+        $builder = $exposure->whereIn('id', $exposure_ids)->with(['order_items', 'category', 'user'])->defaultSort();
 
         // 是否有提交 category 参数
         if ($_category = $request->input('category', ''))
