@@ -1,42 +1,38 @@
 @extends('layouts.app')
 
 @section('content')
-@include('common.error')
+
 
 <div class="loignbox">
 	<div class="head">
 		<a href="javascript:history.go(-1)" class="goback"><</a>
 		<span>登录</span>
-		<a href="register.php">注册</a>
+		<a href="{{route('register')}}">注册</a>
 	</div>
+	@include('common.error')
 	<div>
-		<form class="loginform">
+		<form class="loginform" action="{{ route('login') }}" method="post">
 			<div>
 				<p>
 					<span>账号：</span>
-					<input type="text" name="phone" placeholder=""/>
+					<input class="phone" type="text" name="phone" placeholder=""/>
 				</p>
 				<span class="tipinfo"></span>
 			</div>
 			<div>
 				<p>
 					<span>密码：</span>
-					<input type="password" name="password" />
+					<input class="password" type="password" name="password" />
 				</p>
 				<span class="tipinfo"></span>
 			</div>
-			
-			
-			
+
 				<input type="submit"value="登录" />	
-				
-		
-			
 		</form>
 	</div>
 </div>
 
-
+<script src="{{asset('web/js/jquery-1.8.3.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/jquery.validate.js')}}"></script>
 <script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/validate-methods.js')}}"></script>
 <script src="{{asset('web/library/jquery.form/jquery.form.js')}}"></script>
@@ -72,26 +68,7 @@
 					error.appendTo( element.parent().parent().find(".tipinfo"));                           
 				},
 				submitHandler: function(form) {
-					 $(form).ajaxSubmit({
-						url: "{{ route('login') }}",
-						type: 'post',
-						dataType: 'JSON',
-						success: function(res) {
-							
-						},
-						error:function(XMLHttpRequest){
-							console.log(XMLHttpRequest)
-							if(XMLHttpRequest.status==422){
-								
-								var errorsMassage="";
-								for(var i in JSON.parse( XMLHttpRequest.responseText).errors){
-									console.log(JSON.parse( XMLHttpRequest.responseText).errors[i])
-									errorsMassage+=JSON.parse( XMLHttpRequest.responseText).errors[i];
-								}
-								alert(errorsMassage);
-							} 
-						}
-					}); 
+					$(form).submit();
 				}
 		
 			});

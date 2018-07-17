@@ -7,7 +7,7 @@
     <!--{{dump($user)}}-->
 	<div class="modifybox">
 		<div class="header">
-			<a href="javascript:history.go(-1)" class="goback"><</a>
+			<a href="{{ route("users.index") }}" class="goback"><</a>
 			<span>修改资料</span>	
 		</div>
 		<form class="imgsubmit" method="post" enctype="multipart/form-data"> 

@@ -3,7 +3,7 @@
 @section('content')
 
     
-    @include('common.error')
+    
 		<!--<li>
 		    < a href=" 'logout') }}"
 		       onclick="event.preventDefault();
@@ -15,12 +15,15 @@
 		    </form>
 		</li>-->
 		<div class="loignbox registerbox">
+			
 			<div class="head">
 				<a href="javascript:history.go(-1)" class="goback"><</a>
 				<span>注册</span>
 				
 			</div>
+			@include('common.error')
 			<div>
+				
 				<form class="registerform form-horizontal"  method="POST" action="{{ route('register') }}" >
 					<div>
 						<p>
@@ -276,32 +279,7 @@
 							 },
 							debug:true,			
 				 			submitHandler: function(form) {
-				 							$(form).ajaxSubmit({
-				 								url: "{{ route('register') }}",
-				 								type: 'POST',
-				 								dataType: 'JSON',
-				 						
-				 								success: function(res) {
-													console.log("注册成功")
-				 								},
-													error:function(XMLHttpRequest){
-														console.log(XMLHttpRequest);
-														console.log(XMLHttpRequest);
-															console.log(JSON.parse( XMLHttpRequest.responseText));
-															console.log(JSON.parse( XMLHttpRequest.responseText).errors);
-														console.log(XMLHttpRequest.status);
-															if(XMLHttpRequest.status==422){
-																
-																var errorsMassage="";
-																for(var i in JSON.parse( XMLHttpRequest.responseText).errors){
-																	console.log(JSON.parse( XMLHttpRequest.responseText).errors[i])
-																	errorsMassage+=JSON.parse( XMLHttpRequest.responseText).errors[i];
-																}
-																alert(errorsMassage);
-															}
-														
-													}
-				 							});
+													$(form).submit();
 				 			}
 				 	
 				 		});

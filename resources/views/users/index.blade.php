@@ -27,5 +27,5 @@
 		<p class="phone">客服电话：4008001818</p>
 	</div>
 	
-	
+	@include('layouts._footer')
 @stop

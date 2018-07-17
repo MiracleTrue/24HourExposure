@@ -37,12 +37,12 @@
 </style>
 
 
-  <!--  {{dump($categories)}}
+ <!-- {{dump($categories)}}
    {{dump($news)}}-->
 <div class="newsbox">
 	<div class="header">
 		<span>资讯中心</span>
-		<a href="javascript:history.go(-1)"><</a>
+		<a href="javascript:history.go(-1)"></a>
 	</div>
 	<div class="news_serach">
 		<div>
@@ -79,7 +79,7 @@
 			<a href="{{route('news.show',$item->id)}}">
 				<span class="category">{{$item->category->name}}</span>
 				<img src="{{$item->image}}" />
-				<p>{{$item->content}}</p>
+				<p>{{$item->title}}</p>
 				<span class="date">{{$item->created_at}}</span>
 			</a>
 		</li>
@@ -99,6 +99,7 @@
 		</div>
 	</div>-->
 </div>
+@include('layouts._footer')
 	<script src="{{asset('web/library/jquery.form/jquery.form.js')}}"></script>
 	<script>
 		var filters = {!! json_encode($filters) !!};
@@ -122,5 +123,5 @@
 			$(".myselcct").trigger('submit')
 		})
 	</script>
-@include('layouts._footer')
+
 @stop

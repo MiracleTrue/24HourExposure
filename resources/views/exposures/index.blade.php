@@ -6,10 +6,10 @@
 
 
 
-  <!--  {{dump($categories)}}
+ <!--  {{dump($categories)}}
     {{dump($exposures)}}
-   {{dump($lbs)}}-->
-
+   {{dump($lbs)}}
+-->
     @include('common.error')
 
 <header><span>曝光台</span> <a href="../add-exposure.php"></a></header>
@@ -20,7 +20,7 @@
 			<span id="position">{{$lbs->city}}</span>
 		</div>
 		<div>
-			<form>
+			<form>	
 				<input type="text" placeholder="请输入曝光对象精确查找" />
 				<input type="submit" value="确定" />
 			</form>
@@ -32,7 +32,7 @@
 		{{csrf_field()}}
 
 		<input type="hidden" name="exposure_id" value="8">
-		<input type="hidden" name="gifts" value='[{"id":1,"number":1},{"id":3,"number":2}]'>
+		<input type="hidden" name="gifts" value='[{"id":1,"number":1}]'>
 
 		<input type="submit" value="支付">
 	</form>
@@ -72,16 +72,18 @@
 			<div><img src="{{asset('web/img/baoguanglist.png')}}"/></div>
 			<div>
 				<div class="title">
-					<span>餐饮</span>
+					<span>{{$item->category->name}}</span>
 					<span>曝光对象：</span>
 					<span>{{$item->title}}</span>
 				</div>
 				<div class="comment">
-					<div>56</div>
-					<div>56</div>
-					<div>56</div>
-					<div>56</div>
-					<div>56</div>
+					
+
+					@foreach($item->gifts as $gift)
+					
+
+						<div title="{{$gift->title}}"><img style="" src="{{$gift->image_url}}">{{$gift->sum}}</div>
+					@endforeach
 					
 				</div>
 			</div>
@@ -108,7 +110,7 @@
 </div>
 
 
-
+@include('layouts._footer')
 <!--<script type="text/javascript" src="https://3gimg.qq.com/lightmap/components/geolocation/geolocation.min.js"></script>
 <script>
 	var geolocation = new qq.maps.Geolocation("OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77", "myapp");
