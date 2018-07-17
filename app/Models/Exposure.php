@@ -8,7 +8,7 @@ class Exposure extends Model
 {
 
     protected $fillable = [
-        'category_id', 'name', 'title', 'content'
+        'category_id', 'name', 'title', 'content', 'gift_amount'
     ];
 
     protected $appends = ['gifts'];

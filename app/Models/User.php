@@ -12,7 +12,7 @@ class User extends Authenticatable
 
 
     protected $fillable = [
-        'phone', 'name', 'avatar', 'password', 'id_card'
+        'phone', 'name', 'avatar', 'password', 'id_card', 'gift_amount'
     ];
 
 

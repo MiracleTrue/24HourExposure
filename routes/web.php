@@ -2,9 +2,14 @@
 
 Route::get('test', function () {
 
+    $order = \App\Models\Order::find(8);
+
+    event(new \App\Events\OrderPaid($order));
+
+
+    return '1';
     dd(session('LBS'));
 });
-
 
 
 Auth::routes();

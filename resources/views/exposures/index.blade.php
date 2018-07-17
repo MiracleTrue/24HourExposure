@@ -20,7 +20,7 @@
 			<span id="position">{{$lbs->city}}</span>
 		</div>
 		<div>
-			<form>	
+			<form>
 				<input type="text" placeholder="请输入曝光对象精确查找" />
 				<input type="submit" value="确定" />
 			</form>

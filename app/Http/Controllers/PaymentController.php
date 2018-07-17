@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderPaid;
 use App\Http\Requests\GiftByAlipayRequest;
 use App\Jobs\CloseOrder;
 use App\Models\Exposure;
@@ -119,7 +120,7 @@ class PaymentController extends Controller
             'payment_no' => $data->trade_no, // 支付宝订单号
         ]);
 
-//        event(new OrderPaid($order));
+        event(new OrderPaid($order));
 
         return Pay::alipay($this->alipayConfig())->success();
     }

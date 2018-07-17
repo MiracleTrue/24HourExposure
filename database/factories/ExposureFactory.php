@@ -20,7 +20,7 @@ $factory->define(App\Models\Exposure::class, function (Faker $faker) {
         'name' => $faker->name,
         'title' => $faker->company,
         'content' => $faker->text,
-        'gift_amount' => $faker->randomFloat(2, 1, 500),
+        'gift_amount' => 0,
         'created_at' => $created_at,
         'updated_at' => $updated_at,
     ];
