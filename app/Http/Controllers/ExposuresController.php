@@ -85,7 +85,11 @@ class ExposuresController extends Controller
             'exposure' => $exposure,
             'comments' => $comments,
         ]);
+    }
 
+    public function create()
+    {
+        return view('exposures.create');
     }
 
     /**
@@ -105,7 +109,7 @@ class ExposuresController extends Controller
                 'content' => $request->input('content'),
             ]);
             // 订单关联到当前用户
-            $exposure->user()->associate(1);
+            $exposure->user()->associate($request->user());
 
             $exposure->save();
 
