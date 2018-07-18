@@ -6,6 +6,7 @@ use App\Http\Requests\ExposureStoreRequest;
 use App\Models\Exposure;
 use App\Models\ExposureCategory;
 use App\Models\ExposureComment;
+use App\Models\Gift;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +20,7 @@ class ExposuresController extends Controller
         $categories = $category->defaultSort()->get();
         $today_news = $news->defaultSort()->limit(2)->get();
 
-        $builder = $exposure->where('location_id', $lbs->id)->with(['order_items', 'category'])->defaultSort();
+        $builder = $exposure->where('location_id', $lbs->id)->with(['order_items', 'category']);
 
         // 是否有提交 category 参数
         if ($_category = $request->input('category', ''))
@@ -87,9 +88,15 @@ class ExposuresController extends Controller
         ]);
     }
 
-    public function create()
+    public function create(ExposureCategory $category, Gift $gift)
     {
-        return view('exposures.create');
+        $categories = $category->defaultSort()->get();
+        $gifts = $gift->defaultSort()->get();
+
+        return view('exposures.create', [
+            'categories' => $categories,
+            'gifts' => $gifts
+        ]);
     }
 
     /**
@@ -97,7 +104,8 @@ class ExposuresController extends Controller
      * @return array
      * @throws \Throwable
      */
-    public function store(ExposureStoreRequest $request)
+    public
+    function store(ExposureStoreRequest $request)
     {
         $exposure = DB::transaction(function () use ($request) {
 
