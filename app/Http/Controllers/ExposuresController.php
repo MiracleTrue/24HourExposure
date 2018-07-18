@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ExposureStoreRequest;
 use App\Models\Exposure;
 use App\Models\ExposureCategory;
 use App\Models\ExposureComment;
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ExposuresController extends Controller
 {
@@ -84,5 +86,43 @@ class ExposuresController extends Controller
             'comments' => $comments,
         ]);
 
+    }
+
+    /**
+     * @param ExposureStoreRequest $request
+     * @return array
+     * @throws \Throwable
+     */
+    public function store(ExposureStoreRequest $request)
+    {
+        $exposure = DB::transaction(function () use ($request) {
+
+            $exposure = new Exposure([
+                'location_id' => $request->session()->get('LBS')->id,
+                'category_id' => $request->input('category_id'),
+                'name' => $request->input('name'),
+                'title' => $request->input('title'),
+                'content' => $request->input('content'),
+            ]);
+            // 订单关联到当前用户
+            $exposure->user()->associate(1);
+
+            $exposure->save();
+
+            return $exposure;
+        });
+
+        if ($request->has('gifts'))
+        {
+
+            return redirect()->route('payment.gift.alipay', [
+                'exposure_id' => $exposure->id,
+                'gifts' => $request->input('gifts')
+            ]);
+
+        } else
+        {
+            return redirect()->route('exposures.show', $exposure->id);
+        }
     }
 }

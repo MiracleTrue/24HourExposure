@@ -11,6 +11,10 @@ Route::get('test', function () {
     dd(session('LBS'));
 });
 
+//Route::post('exposures', 'ExposuresController@store')->name('exposures.store');//曝光发布
+
+//Route::get('payment/gift/alipay', 'PaymentController@giftByAlipay')->name('payment.gift.alipay');/*赠送礼物*/
+
 
 Auth::routes();
 Route::redirect('/', '/users')->name('root');
@@ -42,13 +46,15 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     /*曝光*/
+    Route::post('exposures', 'ExposuresController@store')->name('exposures.store');//曝光发布
+
 
 
     /*评论*/
     Route::post('exposure_comments', 'ExposureCommentsController@store')->name('exposure_comments.store');//曝光评论
 
     /*支付*/
-    Route::post('payment/gift/alipay', 'PaymentController@giftByAlipay')->name('payment.gift.alipay');/*赠送礼物*/
+    Route::get('payment/gift/alipay', 'PaymentController@giftByAlipay')->name('payment.gift.alipay');/*赠送礼物*/
 
 });
 

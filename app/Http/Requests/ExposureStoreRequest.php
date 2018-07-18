@@ -2,21 +2,20 @@
 
 namespace App\Http\Requests;
 
-
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Validator;
 
-class GiftByAlipayRequest extends Request
+class ExposureStoreRequest extends Request
 {
 
-    /**
-     * Get the validation rules that apply to the request.
-     * @return array
-     */
     public function rules()
     {
         return [
-            'exposure_id' => ['required', 'exists:exposures,id'],
-            'gifts' => ['required', 'json', function ($key, $json, $fail) {
+            'category_id' => ['required', 'exists:exposure_categories,id'],
+            'name' => ['required', 'unique:exposures,name'],
+            'title' => ['required'],
+            'content' => ['required'],
+            'gifts' => ['sometimes', 'required', 'json', function ($key, $json, $fail) {
 
                 $val = json_decode($json, true);
 
@@ -39,8 +38,12 @@ class GiftByAlipayRequest extends Request
     public function attributes()
     {
         return [
-            'exposure_id' => '曝光',
+            'category_id' => '分类',
+            'name' => '曝光对象',
+            'title' => '曝光标题',
+            'content' => '曝光内容',
             'gifts' => '礼物JSON',
         ];
     }
+
 }
