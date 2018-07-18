@@ -3,5 +3,117 @@
 @section('title','')
 
 @section('content')
+ 
+ <!--{{dump($gifts)}}-->
+ 	<form class="payform" action="{{route('payment.gift.alipay')}}" method="GET">
+ 			{{csrf_field()}}
+ 
+ 		<input type="hidden" name="exposure_id" value="{{$exposure->id}}">
+ 		<input type="hidden" name="gifts" value=''>
+ 
+ 		<input type="submit" value="支付">
+ 	</form>
+	<div class="addbox">
+		<div class="header">
+			<a href="javascript:history.go(-1)" class="goback"><</a>
+			<span>增加曝光</span>
+			
+		</div>
+		@include('common.error')
+		<form class="create" action="{{ route('exposures.store') }}" method="post">
+			<div>
+			<p>
+				<span>选择分类：</span>
+				<select name="category" >
+					<option value="">全部</option> 
+					@foreach($categories as $item)
+						<option value="{{$item->id}}">{{$item->name}}</option>
+					@endforeach
+				</select>
+			</p>
+			<span class="tipinfo"></span>
+			</div>
+			<div>
+				<p>
+					<span>曝光对象：</span>
+					<input name="name" type="" placeholder=""  />
+				</p>
+				<span class="tipinfo"></span>
+			</div>
+			<div>
+				<p>
+					<span>标题：</span>
+					<input name="title" type="text" placeholder="请输入要曝光的对象" />
+				</p>
+				<span class="tipinfo"></span>
+			</div>
+			<div>
+				<p class="content">
+					<span>内容：</span>
+					<textarea name="content"></textarea>
+				</p>
+				<span class="tipinfo"></span>
+			</div>
+			<div class="comment">
+				@foreach($gifts as $item)
+					<div style="display: flex;" title="{{$item->title}}"><img style="" src="{{$item->image_url}}"><input style="width: 0.5rem;" type="number" min="0" value="0"/></div>
+				@endforeach
+				
+			</div>
+			<input class="nextstep" type="submit" value="提交"/ >
+		</form>
+	</div>
+    
+   <script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/jquery.validate.js')}}"></script>
+   <script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/validate-methods.js')}}"></script>
+
+	<script>
+		 $(".create").validate({
+				rules: {
+					category:{
+						required:true,
+						
+					},
+					name: {
+						required: true,
+					},
+					title:{
+						required: true
+					},
+					content:{
+						required:true,
+						
+					}
+						
+				},
+				messages: {
+					category: {
+						required: "请选择分类"
+					},
+					name:{
+						required: "请输入曝光对象",
+					},
+					title:{
+						required:'请输入标题',
+						
+					},
+					content:{
+						required:"请输入曝光的内容",
+						
+					}
+				},
+				errorPlacement: function(error, element) {                             //错误信息位置设置方法
+				error.appendTo( element.parent().parent().find(".tipinfo"));                            //这里的element是录入数据的对象
+				},
+				debug:false,			
+				submitHandler: function(form) {
+					$("input[type='submit']").attr("disabled","disabled");
+					$(form).submit();
+							
+				}
+		
+			});
+	</script>
+
 
 @stop

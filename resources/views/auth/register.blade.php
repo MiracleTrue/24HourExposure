@@ -63,7 +63,7 @@
 						<span class="tipinfo"></span>
 					</div>
 					
-					<p style="position: relative;"><input type="submit"value="注册" /></p>
+					<p style="position: relative;"><input type="submit" value="注册" /></p>
 					
 				</form>
 			</div>
@@ -277,9 +277,11 @@
 							errorPlacement: function(error, element) {                             //错误信息位置设置方法
 							 error.appendTo( element.parent().parent().find(".tipinfo"));                            //这里的element是录入数据的对象
 							 },
-							debug:true,			
+							debug:false,			
 				 			submitHandler: function(form) {
-													$(form).submit();
+										$("input[type='submit']").attr("disabled","disabled");
+										$(form).submit();
+										
 				 			}
 				 	
 				 		});

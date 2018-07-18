@@ -7,11 +7,11 @@
     {{dump($comments)}}-->
 
 		
-		<form class="payform" action="{{route('payment.gift.alipay')}}" method="POST">
+		<form class="payform" action="{{route('payment.gift.alipay')}}" method="GET">
 			{{csrf_field()}}
 
 		<input type="hidden" name="exposure_id" value="{{$exposure->id}}">
-		<input type="hidden" name="gifts" value='[{"id":1,"number":1}]'>
+		<input type="hidden" name="gifts" value=''>
 
 		<input type="submit" value="支付">
 	</form>

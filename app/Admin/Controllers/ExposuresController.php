@@ -87,7 +87,6 @@ class ExposuresController extends Controller
             $grid->title('标题');
             $grid->gift_amount('礼物总金额')->sortable();
             $grid->comment_count('评论数')->sortable();
-
             $grid->created_at('创建时间')->sortable();
 
 

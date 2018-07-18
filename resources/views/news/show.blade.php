@@ -3,7 +3,7 @@
 @section('title',' 的个人中心')
 
 @section('content')
-    {{dump($news)}}
+  <!--  {{dump($news)}}-->
 
 <div class="newsshowbox">
 	<div class="header">
