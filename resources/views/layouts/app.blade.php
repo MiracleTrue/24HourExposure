@@ -21,7 +21,7 @@
 	<link rel="stylesheet/less" type="text/css" href="{{asset('web/less/news.less')}}">
 	<link rel="stylesheet/less" type="text/css" href="{{asset('web/less/newsshow.less')}}">
 	<link rel="stylesheet/less" type="text/css" href="{{asset('web/less/search.less')}}">
-	<script src="{{asset('web/js/jquery-1.8.3.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('web/library/jquery/1.9.1/jquery.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('web/js/rem.js')}}"></script>
 	<script type="text/javascript" src="{{asset('web/js/less.min.js')}}"></script>
 </head>

@@ -4,15 +4,6 @@
 
 @section('content')
  
- <!--{{dump($gifts)}}-->
- 	<form class="payform" action="{{route('payment.gift.alipay')}}" method="GET">
- 			{{csrf_field()}}
- 
- 		<input type="hidden" name="exposure_id" value="{{$exposure->id}}">
- 		<input type="hidden" name="gifts" value=''>
- 
- 		<input type="submit" value="支付">
- 	</form>
 	<div class="addbox">
 		<div class="header">
 			<a href="javascript:history.go(-1)" class="goback"><</a>
@@ -24,7 +15,7 @@
 			<div>
 			<p>
 				<span>选择分类：</span>
-				<select name="category" >
+				<select name="category_id" >
 					<option value="">全部</option> 
 					@foreach($categories as $item)
 						<option value="{{$item->id}}">{{$item->name}}</option>
@@ -54,21 +45,50 @@
 				</p>
 				<span class="tipinfo"></span>
 			</div>
+			<input type="hidden" name="gifts" value=''>
 			<div class="comment">
-				@foreach($gifts as $item)
-					<div style="display: flex;" title="{{$item->title}}"><img style="" src="{{$item->image_url}}"><input style="width: 0.5rem;" type="number" min="0" value="0"/></div>
-				@endforeach
 				
+				@foreach($gifts as $item)
+					<div style="display: flex;"  title="{{$item->title}}"><img style="" src="{{$item->image_url}}"><input data_id="{{$item->id}}" style="width: 0.5rem;" type="number" min="0" value="0"/></div>
+				@endforeach	
 			</div>
+			<div class="asdfaf">asdfaf</div>
 			<input class="nextstep" type="submit" value="提交"/ >
 		</form>
 	</div>
     
    <script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/jquery.validate.js')}}"></script>
    <script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/validate-methods.js')}}"></script>
+	 <script type="text/javascript" src="{{asset('web/library/jqueryJson/jquery.json.js')}}"></script>
 
 	<script>
-		 $(".create").validate({
+		$(function(){	
+		 	var strjson="";
+					$('.nextstep').click(function(){ 
+						var myJson=new Array();
+						$(".comment input").each(function(i,index){
+							var obj=new Object();
+							obj.id=$(index).attr('data_id');
+							obj.number=$(index).val();
+							if(obj.number!=0){
+								myJson.push(obj);
+							}
+							
+						})
+						
+						strjson = $.toJSON(myJson);
+						console.log(strjson)
+						if(strjson=='[]'){
+							$("input[name='gifts']").attr("name","");
+						}else{
+							$("input[name='gifts']").val(strjson);
+						}
+						
+				}) 
+			
+		
+		
+	  $(".create").validate({
 				rules: {
 					category:{
 						required:true,
@@ -105,14 +125,14 @@
 				errorPlacement: function(error, element) {                             //错误信息位置设置方法
 				error.appendTo( element.parent().parent().find(".tipinfo"));                            //这里的element是录入数据的对象
 				},
-				debug:false,			
 				submitHandler: function(form) {
-					$("input[type='submit']").attr("disabled","disabled");
-					$(form).submit();
+						
+						$(form).submit();
 							
 				}
 		
-			});
+			}); 
+})
 	</script>
 
 

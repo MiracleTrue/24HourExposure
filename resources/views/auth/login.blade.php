@@ -31,11 +31,9 @@
 		</form>
 	</div>
 </div>
-
-<script type="text/javascript" src="{{asset('web/js/jquery-1.8.3.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/jquery.validate.js')}}"></script>
 <script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/validate-methods.js')}}"></script>
-<!--<script src="{{asset('web/library/jquery.form/jquery.form.js')}}"></script>-->
+{{--<script src="{{asset('web/library/jquery.form/jquery.form.js')}}"></script>--}}
 <script>
 	$(function(){
 		var register = $(".loginform").validate({
@@ -45,7 +43,6 @@
 						isMobile:true
 		
 					},
-					
 					password:{
 						required:true,
 						minlength:6
@@ -53,7 +50,7 @@
 						
 				},
 				messages: {
-					phonenum: {
+					phone: {
 						required: "请输入账号",
 						isMobile: "请输入正确账号"
 		
@@ -65,10 +62,10 @@
 					}
 				},
 				errorPlacement: function(error, element) {                            
-					error.appendTo( element.parent().parent().find(".tipinfo"));                           
+					error.appendTo(element.parent().parent().find(".tipinfo"));                           
 				},
 				submitHandler: function(form) {
-					$("input[type='submit']").attr("disabled","disabled");
+					$(".loginform input[type='submit']").attr("disabled","disabled");
 					$(form).submit();
 				}
 		
