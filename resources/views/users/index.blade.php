@@ -12,8 +12,16 @@
 
 	<div class="personlbox">
 		<div class="header">
+			
 			<a href="javascript:history.go(-1)" class="goback"></a>
-			<span>个人中心</span>
+			<span style="margin-right: -74px;">个人中心</span>
+			<a style="color: #FFFFFF;float: right;margin-right: 20px;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+					退出登录
+			</a>
+			<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+					{{ csrf_field() }}
+			</form>
+		
 		</div>
 		<div class="personalinfo">
 			<a style="border: none;" href="{{route('users.edit',$user->id)}}"><img src="{{$user->avatar_url}}" /></a>
