@@ -42,11 +42,11 @@
 			</form>
 		</div>
 	</div>
-	<!--newslist-->
+
 	<ul class="exposure_list">
 		@foreach($exposures as $item)
 		<li>
-			<a>
+			<a href="{{route('exposures.show',$item->id)}}">
 				<div class="customer">
 					<span class="category">{{$item->category->name}}</span>
 					<img src="{{$item->user->avatar_url}}" />	

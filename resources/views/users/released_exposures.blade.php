@@ -14,7 +14,7 @@
 	<div class="header">
 		<a href="javascript:history.go(-1)" class="goback"><</a>
 		<span>我发过的曝光</span>
-		<a class="add"><img src="{{asset('web/img/addbaoguang.png')}}"/></a>
+		<a href="{{route('exposures.create')}}" class="add"><img src="{{asset('web/img/addbaoguang.png')}}"/></a>
 	</div>
 	<div class="news_serach">
 		<div>
@@ -42,11 +42,11 @@
 			</form>
 		</div>
 	</div>
-	<!--newslist-->
+	
 	<ul class="exposure_list">
 		@foreach($exposures as $item)
 		<li>
-			<a>
+			<a href="{{route('exposures.show',$item->id)}}">
 				<div class="customer">
 					<span class="category">{{$item->category->name}}</span>
 					<img src="{{$item->user->avatar_url}}" />	
