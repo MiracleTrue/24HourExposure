@@ -13,7 +13,7 @@
 <!--{{dump($today_news)}}-->
     @include('common.error')
 
-<header><span>曝光台</span> <a href="../add-exposure.php"></a></header>
+<header><span>曝光台</span> <a href="{{route('exposures.create')}}"></a></header>
 <div class="homebox">
 	<div class="location">
 		<!--定位-->

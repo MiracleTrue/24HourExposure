@@ -52,7 +52,6 @@
 					<div style="display: flex;"  title="{{$item->title}}"><img style="" src="{{$item->image_url}}"><input data_id="{{$item->id}}" style="width: 0.5rem;" type="number" min="0" value="0"/></div>
 				@endforeach	
 			</div>
-			<div class="asdfaf">asdfaf</div>
 			<input class="nextstep" type="submit" value="提交"/ >
 		</form>
 	</div>
