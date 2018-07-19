@@ -104,8 +104,7 @@ class ExposuresController extends Controller
      * @return array
      * @throws \Throwable
      */
-    public
-    function store(ExposureStoreRequest $request)
+    public function store(ExposureStoreRequest $request)
     {
         $exposure = DB::transaction(function () use ($request) {
 

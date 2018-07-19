@@ -15,7 +15,9 @@ Route::get('test', function () {
 
 //Route::get('payment/gift/alipay', 'PaymentController@giftByAlipay')->name('payment.gift.alipay');/*赠送礼物*/
 
-
+Horizon::auth(function ($request) {
+    return Auth::guard('admin')->check();
+});
 Auth::routes();
 Route::redirect('/', '/users')->name('root');
 //Route::get('/', 'PagesController@root')->name('root');
