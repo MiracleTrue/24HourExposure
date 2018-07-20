@@ -21,16 +21,14 @@ class LBS
      */
     public function handle($request, Closure $next)
     {
-
-        dd($request->getClientIp());
-
+        
         if (!$request->session()->has('LBS'))
         {
             $client = new Client();
 
             $res = $client->request('GET', 'https://apis.map.qq.com/ws/location/v1/ip', [
                 'query' => [
-                    'ip' => '61.162.60.118',
+                    'ip' => $request->getClientIp(),
                     'key' => config('app.tencent_lbs_key'),
                 ],
             ]);
