@@ -35,14 +35,25 @@
 <!-- JS 脚本 -->
 {{--<script src="{{ mix('js/app.js') }}"></script>--}}
 <script>
-	$(function(){
+	
+		var oHeight = $(document).height(); //浏览器当前的高度
+		$(window).resize(function(){
+			 if($(document).height() < oHeight){
+			 $("footer").css("position","static");
+		 }else{
+			 $("footer").css("position","absolute");
+		 }
+		});
+	
+	
+	/* $(function(){
 		$('input').focus(function(){
         $('footer').css('display','none');  
     })
     $('input').blur(function(){
         $('footer').css('display','block');  
     })
-	})
+	}) */
 </script>
 @yield('scriptsAfterJs')
 </body>
