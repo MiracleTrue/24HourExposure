@@ -78,7 +78,7 @@ class RegisterController extends Controller
     {
         return User::create([
             'phone' => $data['phone'],
-            'avatar' => '/vendor/laravel-admin/AdminLTE/dist/img/user2-160x160.jpg',
+            'avatar' => 'http://www.24xiaoshi.net.cn/vendor/laravel-admin/AdminLTE/dist/img/user2-160x160.jpg',
             'name' => Str::random(8),
             'password' => bcrypt($data['password']),
             'id_card' => $data['id_card'],
