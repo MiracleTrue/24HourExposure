@@ -6,7 +6,7 @@
  
 	<div class="addbox">
 		<div class="header">
-			<a href="javascript:history.go(-1)" class="goback"><</a>
+			<a href="{{route('root')}}" class="goback"><</a>
 			<span>增加曝光</span>
 			
 		</div>
