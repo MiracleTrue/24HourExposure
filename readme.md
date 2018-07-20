@@ -219,6 +219,15 @@ WECHAT_KEY=
         ]);
 ```
 
+###### 导航的 Active 状态
+```
+composer require "hieu-le/active:~3.5"
+函数:
+function active_class($condition, $activeClass = 'active', $inactiveClass = '')
+使用:
+{{ active_class((if_route('category.show') && if_route_param('category', 1))) }}
+```
+
 ##
 ## Composer 常用插件:
 
@@ -237,15 +246,6 @@ php artisan queue:failed-table
     "dingo/api": "2.0.0-alpha1"
 }
 php artisan vendor:publish --provider="Dingo\Api\Provider\LaravelServiceProvider"
-```
-
-###### 导航的 Active 状态
-```
-composer require "hieu-le/active:~3.5"
-函数:
-function active_class($condition, $activeClass = 'active', $inactiveClass = '')
-使用:
-{{ active_class((if_route('category.show') && if_route_param('category', 1))) }}
 ```
 
 ###### 安装 HTMLPurifier for Laravel 5 ( XSS攻击 用户提交数据过滤器)
