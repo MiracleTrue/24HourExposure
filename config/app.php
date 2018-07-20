@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'order_ttl' => 300,//订单超时 5分钟
+    'order_ttl' => 900,//订单超时 15分钟
 
 
     'tencent_lbs_key' => env('TENCENT_LBS_KEY', null),

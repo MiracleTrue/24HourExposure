@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -77,8 +78,8 @@ class RegisterController extends Controller
     {
         return User::create([
             'phone' => $data['phone'],
-            'avatar' => '',
-            'name' => '默认用户名',
+            'avatar' => asset('/vendor/laravel-admin/AdminLTE/dist/img/user2-160x160.jpg'),
+            'name' => Str::random(8),
             'password' => bcrypt($data['password']),
             'id_card' => $data['id_card'],
         ]);
