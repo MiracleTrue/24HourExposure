@@ -34,6 +34,14 @@
 			<span class="disabled" onclick='disabled()'>{{$user->id_card}} </span>
 		</p>
 
+			<a class="logout" style="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+					退出登录
+			</a>
+			<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+					{{ csrf_field() }}
+			</form>
+		
+		
 	</div>
 	<script src="{{asset('web/library/jquery.form/jquery.form.js')}}"></script>
 	<script>

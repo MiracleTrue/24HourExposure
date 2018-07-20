@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title',' 的个人中心')
+@section('title',$news->title)
 
 @section('content')
   <!--  {{dump($news)}}-->

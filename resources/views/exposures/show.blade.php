@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title',' 的个人中心')
+@section('title',$exposure->title)
 
 @section('content')
-<!--{{dump($exposure)}}
-    {{dump($comments)}}-->
+{{--dump($exposure)--}}
+    <!--{{dump($comments)}}-->
 
 		
 		<form class="payform" action="{{route('payment.gift.alipay')}}" method="GET">
@@ -20,7 +20,7 @@
 	
 <div class="exposurebox">
 	<div class="header">
-		<a href="javascript:history.go(-1)"><</a>
+		<a href="{{route('root')}}"><</a>
 		<span>曝光详情</span>
 	</div>
 	<div class="comment">
@@ -32,11 +32,11 @@
 	</div>
 	<!--曝光对象-->
 	<div class="exposure_object">
-		<p class="date">2018-03-22</p>
+		<p class="date">{{$exposure->created_at}}</p>
 		<div class="exposure_objecttitle">
-			<img src="{{$exposure->user->avatar}}" />
-			<span class="name">{{$exposure->name}}</span>
-			<span>曝光对象：<em>{{$exposure->title}}</em></span>
+			<img src="{{$exposure->user->avatar_url}}" />
+			<span class="name">{{$exposure->user->name}}</span>
+			<span>曝光对象：<em>{{$exposure->name}}</em></span>
 		</div>
 		<div class="exposure_content">
 			<p>
@@ -53,11 +53,11 @@
 	<!--评论内容-->
 		<div class="comment_content">
 			<h1>评论</h1>
-			@foreach($comments as $item)
+			@foreach($comments as $key => $item)
 				<div>
-					<p>1楼</p>
+					<p>{{++$key}}楼</p>
 					<div class="comment_personl">
-						<img src="{{$item->user->avatar}}" />
+						<img src="{{$item->user->avatar_url}}" />
 						<span class="name">{{$item->user->name}}</span>
 						<span>{{$item->created_at}}</span>
 					</div>
@@ -117,11 +117,18 @@
 				success: function(res) {
 					console.log(res);
 					alert("评论成功");
+					window.location.reload();
 				},
 				error:function(error)
 				{
 					console.log(error);
-
+					console.log(error.status)
+						if(error.status==422){
+							alert('评论内容不能为空');
+						}
+						if(error.status==401){
+							window.location.href="{{route('login')}}"
+						}
 				}
 			})
 		}) 

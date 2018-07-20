@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title', 'XXX')
-
 @section('content')
 
 
@@ -72,7 +70,7 @@
 			<div><img src="{{asset('web/img/baoguanglist.png')}}"/></div>
 			<div>
 				<div class="title">
-					<span>{{$item->category->name}}</span>
+					<span style="margin-right: 0.1rem;">{{$item->category->name}}</span>
 					<span>曝光对象：</span>
 					<span>{{$item->name}}</span>
 				</div>
@@ -95,7 +93,7 @@
 	<div class="todynews">
 		<div></div>
 		@foreach($today_news as $item)
-			<a href="{{route('news.show',$item->id)}}"><span style="margin-right: 10px;">今日资讯</span><span>{{$item->content}}</span></a>
+			<a href="{{route('news.show',$item->id)}}"><span style="margin-right: 10px;">今日资讯</span><span>{{$item->title}}</span></a>
 		@endforeach
 	
 	</div>
