@@ -3,10 +3,6 @@
 @section('title',$exposure->title)
 
 @section('content')
-{{--dump($exposure)--}}
-    <!--{{dump($comments)}}-->
-
-		
 		<form class="payform" action="{{route('payment.gift.alipay')}}" method="GET">
 			{{csrf_field()}}
 

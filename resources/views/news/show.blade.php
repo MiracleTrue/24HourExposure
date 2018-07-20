@@ -3,7 +3,6 @@
 @section('title',$news->title)
 
 @section('content')
-  <!--  {{dump($news)}}-->
 
 <div class="newsshowbox">
 	<div class="header">
@@ -18,7 +17,7 @@
 		<p class="date">{{$news->created_at}}</p>
 		
 		<p class="newsdetails">
-			{{$news->content}}
+			{!!$news->content!!}
 		</p>
 	</div>
 	

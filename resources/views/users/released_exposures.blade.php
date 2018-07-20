@@ -3,9 +3,6 @@
 @section('content')
 
 
-   <!-- {{dump($categories)}}
-
-    {{dump($exposures)}}-->
 
     @include('common.error')
 <div class="myexposurebox">
@@ -69,6 +66,7 @@
 		$(document).ready(function () {
 			$('.categories').val(filters.category);
 			$('.selcct_time').val(filters.time);
+			$("input[name='search']").val(filters.search);
 		});
 	$(".categories").change(function(){
 		$(".myselcct").trigger('submit');

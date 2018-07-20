@@ -10,8 +10,7 @@
 </style>
 
 
- <!-- {{dump($categories)}}
-   {{dump($news)}}-->
+ 
 <div class="newsbox">
 	<div class="header">
 		<span>资讯中心</span>
@@ -51,7 +50,7 @@
 		<li>
 			<a href="{{route('news.show',$item->id)}}">
 				<span class="category">{{$item->category->name}}</span>
-				<img src="{{$item->image}}" />
+				<img src="{{$item->image_url}}" />
 				<p>{{$item->title}}</p>
 				<span class="date">{{$item->created_at}}</span>
 			</a>
@@ -82,6 +81,7 @@
 		$(document).ready(function () {
 			$('.categories').val(filters.category);
 			$('.selcct_time').val(filters.time);
+			$("input[name='search']").val(filters.search);
 		});
 
 	/* 	$('.search-form select[name=order]').on('change', function () {

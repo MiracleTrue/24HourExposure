@@ -113,20 +113,14 @@
 
 
 @include('layouts._footer')
-<!--<script type="text/javascript" src="https://3gimg.qq.com/lightmap/components/geolocation/geolocation.min.js"></script>
-<script>
-	var geolocation = new qq.maps.Geolocation("OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77", "myapp");
-	geolocation.getLocation(showPosition)
-	function showPosition(position) {
-		document.getElementById("position").innerHTML = position.city
-	};
-</script>-->
+
 <script>
 	var filters = {!! json_encode($filters) !!};
 		console.log(filters);
 		$(document).ready(function () {
 			$('.categories').val(filters.category);
 			$('.sort').val(filters.sort);
+			$("input[name='search']").val(filters.search);
 		});
 	$(".categories").change(function(){
 		$(".myselcct").trigger('submit');

@@ -5,11 +5,6 @@
 @section('content')
 
 
-    <!--{{dump($user)}}-->
-
-
-    <!--<a href="{{route('users.edit',$user->id)}}">修改资料</a>-->
-
 	<div class="personlbox">
 		<div class="header">
 			

@@ -4,7 +4,6 @@
 
 @section('content')
 
-    <!--{{dump($user)}}-->
 	<div class="modifybox">
 		<div class="header">
 			<a href="{{ route("users.index") }}" class="goback"><</a>
