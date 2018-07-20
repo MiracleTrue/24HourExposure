@@ -9,7 +9,7 @@
 		<input type="hidden" name="exposure_id" value="{{$exposure->id}}">
 		<input type="hidden" name="gifts" value=''>
 
-		<input type="submit" value="支付">
+		
 	</form>
 	
 	
