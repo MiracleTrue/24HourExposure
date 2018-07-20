@@ -47,8 +47,10 @@ class Exposure extends Model
     public function getGiftsAttribute()
     {
         $all_gifts = Gift::getAllCached();
-        $all_gifts->transform(function ($item) {
-            $item->sum = $this->order_items->where('gift_id', $item->id)->sum('number');
+        $paid_orders = $this->orders->whereNotIn('paid_at', [null])->pluck('id');
+
+        $all_gifts->transform(function ($item) use ($paid_orders) {
+            $item->sum = $this->order_items->whereIn('order_id', $paid_orders)->where('gift_id', $item->id)->sum('number');
             return $item;
         });
 
