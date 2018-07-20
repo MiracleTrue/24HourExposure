@@ -11,9 +11,9 @@ Route::get('test', function () {
 //    dd(session('LBS'));
 });
 
-//Horizon::auth(function ($request) {
-//    return Auth::guard('admin')->check();
-//});
+Horizon::auth(function ($request) {
+    return Auth::guard('admin')->check();
+});
 Auth::routes();
 Route::redirect('/', '/exposures')->name('root');/*首页*/
 //Route::get('/', 'PagesController@root')->name('root');
