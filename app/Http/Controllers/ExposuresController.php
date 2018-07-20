@@ -79,7 +79,7 @@ class ExposuresController extends Controller
 
         $exposure = $exposure->load(['category', 'user']);
 
-        $comments = $exposure->comments()->defaultSort()->get();
+        $comments = $exposure->comments()->orderBy('created_at', 'asc')->get();
         $comments->load(['user']);
 
         return view('exposures.show', [

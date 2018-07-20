@@ -8,14 +8,14 @@ Route::get('test', function () {
 //
 //
 //    return '1';
-    dd(session('LBS'));
+//    dd(session('LBS'));
 });
 
 //Horizon::auth(function ($request) {
 //    return Auth::guard('admin')->check();
 //});
 Auth::routes();
-Route::redirect('/', '/users')->name('root');/*首页*/
+Route::redirect('/', '/exposures')->name('root');/*首页*/
 //Route::get('/', 'PagesController@root')->name('root');
 
 

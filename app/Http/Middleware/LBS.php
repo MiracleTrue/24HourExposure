@@ -22,6 +22,8 @@ class LBS
     public function handle($request, Closure $next)
     {
 
+        dd($request->getClientIp());
+
         if (!$request->session()->has('LBS'))
         {
             $client = new Client();
