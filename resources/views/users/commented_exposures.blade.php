@@ -12,7 +12,7 @@
 	<div class="header">
 		<a href="javascript:history.go(-1)" class="goback"><</a>
 		<span>我评论过的曝光</span>
-		<a class="add"><img src="{{asset('web/img/addbaoguang.png')}}"/></a>
+		<a href="{{route('exposures.create')}}" class="add"><img src="{{asset('web/img/addbaoguang.png')}}"/></a>
 	</div>
 	<div class="news_serach">
 		<div>
