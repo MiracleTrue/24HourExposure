@@ -15,7 +15,7 @@ class ExposuresSeeder extends Seeder
         \App\Models\ExposureCategory::all()->each(function ($object) {
             //对每一个主表数据，产生一个 x - x 的随机数的数据。
             //同时指定这批数据的 外键 字段统一为当前循环的 ID。
-            $object = factory(\App\Models\Exposure::class, random_int(4, 8))->create([
+            $object = factory(\App\Models\Exposure::class, random_int(40, 80))->create([
                 'category_id' => $object->id,
             ]);
 

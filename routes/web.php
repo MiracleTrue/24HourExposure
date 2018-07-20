@@ -11,15 +11,11 @@ Route::get('test', function () {
     dd(session('LBS'));
 });
 
-//Route::post('exposures', 'ExposuresController@store')->name('exposures.store');//曝光发布
-
-//Route::get('payment/gift/alipay', 'PaymentController@giftByAlipay')->name('payment.gift.alipay');/*赠送礼物*/
-
 //Horizon::auth(function ($request) {
 //    return Auth::guard('admin')->check();
 //});
 Auth::routes();
-Route::redirect('/', '/users')->name('root');
+Route::redirect('/', '/users')->name('root');/*首页*/
 //Route::get('/', 'PagesController@root')->name('root');
 
 
@@ -56,8 +52,8 @@ Route::get('exposures', 'ExposuresController@index')->name('exposures.index');/*
 Route::get('exposures/{exposure}', 'ExposuresController@show')->name('exposures.show');/*曝光详情*/
 
 /*新闻*/
-Route::get('news', 'NewsController@index')->name('news.index');//资讯中心
-Route::get('news/{news}', 'NewsController@show')->name('news.show');//资讯详情
+Route::get('news', 'NewsController@index')->name('news.index');/*资讯中心*/
+Route::get('news/{news}', 'NewsController@show')->name('news.show');/*资讯详情*/
 
 
 /*支付回调*/
