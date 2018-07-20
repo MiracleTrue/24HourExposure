@@ -49,7 +49,7 @@
 			<div class="comment">
 				
 				@foreach($gifts as $item)
-					<div style="display: flex;"  title="{{$item->title}}"><img style="" src="{{$item->image_url}}"><input data_id="{{$item->id}}" style="width: 0.5rem;" type="number" min="0" value="0"/></div>
+					<div style="display: flex;"  title="{{$item->title}}"><img style="" src="{{$item->image_url}}"><input data_id="{{$item->id}}" style="width: 0.4rem;border: 1px solid #999999;height: 0.57rem;text-align: center;" type="number" min="0" value="0"/> <p class="gift_num"><span class="add" >+</span><span class="reduce">-</span></p>               </div>
 				@endforeach	
 			</div>
 			<input class="nextstep" type="submit" value="提交"/ >
@@ -61,7 +61,29 @@
 	 <script type="text/javascript" src="{{asset('web/library/jqueryJson/jquery.json.js')}}"></script>
 
 	<script>
+
 		$(function(){	
+		$(".add").on("click",function(){
+		var val =	$(this).parent().siblings('input').val();
+		val++
+			
+		$(this).parent().siblings('input').val(val)
+		})
+		$(".reduce").on("click",function(){
+		var val =	$(this).parent().siblings('input').val();
+		if(val>0){
+			val--
+		}
+		
+			
+		$(this).parent().siblings('input').val(val)
+		})
+		
+		
+		
+		
+		
+		
 		 	var strjson="";
 					$('.nextstep').click(function(){ 
 						var myJson=new Array();

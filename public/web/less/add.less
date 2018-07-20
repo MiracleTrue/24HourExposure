@@ -68,24 +68,35 @@
 	}
 	.comment{
 		display: flex;
-		justify-content: flex-start;
+		justify-content:space-around;
 		align-items: center;
-		padding-left: 0.9rem;
+		width: 100%;
 		margin-top: 0.3rem;
-
+		flex-wrap: wrap;
 		div{
 			padding-left: 0.36rem;
-			height: 0.44rem;
-			width: 13%;
+			margin-top: 0.2rem;
 			line-height: 0.44rem;
 			text-indent: 5px;
 			img{
-				width: 0.44rem;
+				width: 0.6rem;
+				height: 0.6rem;
 			}
 		}
 		
 	}
 	input[type="submit"]{
 		border: none;
+	}
+	.gift_num{
+		line-height: 0.6rem;
+		display: block;
+		span{
+			height: 0.27rem;
+			display: block;
+			line-height: 0.3rem;
+			width: 0.4rem;
+			border: 1px solid #EEEEEE;
+		}
 	}
 }

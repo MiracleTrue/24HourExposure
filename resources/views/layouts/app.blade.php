@@ -34,7 +34,16 @@
 </div>
 <!-- JS 脚本 -->
 {{--<script src="{{ mix('js/app.js') }}"></script>--}}
-
+<script>
+	$(function(){
+		$('input').focus(function(){
+        $('footer').css('display','none');  
+    })
+    $('input').blur(function(){
+        $('footer').css('display','block');  
+    })
+	})
+</script>
 @yield('scriptsAfterJs')
 </body>
 </html>

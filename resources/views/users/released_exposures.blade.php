@@ -78,7 +78,7 @@
 	})
 </script>
 
-    @include('layouts._footer')
+  
 
 
 @stop
