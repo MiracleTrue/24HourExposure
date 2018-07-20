@@ -31,7 +31,7 @@ class Gift extends Model
     //默认排序
     public function scopeDefaultSort($query)
     {
-        return $query->orderBy('created_at', 'desc');
+        return $query->orderBy('sort', 'desc');
     }
 
 
