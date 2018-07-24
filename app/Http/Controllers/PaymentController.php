@@ -95,8 +95,6 @@ class PaymentController extends Controller
      */
     public function giftAlipayNotify(Request $request)
     {
-
-
         // 校验输入参数
         $data = Pay::alipay(self::alipayConfig())->verify();
 

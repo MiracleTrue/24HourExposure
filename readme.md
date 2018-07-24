@@ -98,6 +98,9 @@ php artisan config:cache
 - QCLOUD_SDK_APP_ID= `//SDK APP ID`
 - QCLOUD_APP_KEY= `//APP KEY`
 
+###### 腾讯云位置服务
+TENCENT_LBS_KEY= `APP KEY`
+
 ###### 支付宝 配置
 - ALI_APP_ID=
 - ALI_PUBLIC_KEY=
