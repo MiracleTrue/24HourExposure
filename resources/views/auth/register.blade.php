@@ -13,6 +13,7 @@
 			<div>
 				
 				<form class="registerform form-horizontal"  method="POST" action="{{ route('register') }}" >
+					{{ csrf_field() }}
 					<div>
 						<p>
 								<span>手机号：</span>
@@ -78,7 +79,8 @@
 						 url:'{{ route("phone_verification.store") }}',
 						 async:true,
 						 data:{
-							 phone:$(".phonenum").val()
+							 phone:$(".phonenum").val(),
+							 _token:'{{csrf_token()}}'
 						 },
 						 success:function(res){
 							 /* console.log(res) */

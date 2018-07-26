@@ -7,11 +7,12 @@
 	<div class="head">
 		<a href="javascript:history.go(-1)" class="goback"><</a>
 		<span>登录</span>
-		<a href="{{route('register')}}">注册</a>
+		<a style="position: absolute;right: 0.24rem;top: 50%;margin-top: -0.5rem;" href="{{route('register')}}">注册</a>
 	</div>
 	@include('common.error')
 	<div>
 		<form class="loginform" action="{{ route('login') }}" method="post">
+			{{ csrf_field() }}
 			<div>
 				<p>
 					<span>账号：</span>

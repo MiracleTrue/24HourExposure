@@ -10,6 +10,7 @@
 			<span>修改资料</span>	
 		</div>
 		<form class="imgsubmit" method="post" enctype="multipart/form-data"> 
+		{{ csrf_field() }}
 			<input type="hidden" name="_method" value="PUT" />
 			<p style="position: relative;">
 				<span>头像：</span>

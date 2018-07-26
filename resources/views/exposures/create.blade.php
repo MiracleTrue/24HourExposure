@@ -12,6 +12,7 @@
 		</div>
 		@include('common.error')
 		<form class="create" action="{{ route('exposures.store') }}" method="post">
+			{{ csrf_field() }}
 			<div>
 			<p>
 				<span>选择分类：</span>
