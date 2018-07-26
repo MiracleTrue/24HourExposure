@@ -13,12 +13,13 @@
 	</form>
 	
 	
-	
-<div class="exposurebox">
-	<div class="header">
+	<div class="header exposureboxheader">
 		<a href="{{route('root')}}"><</a>
 		<span>曝光详情</span>
 	</div>
+<div class="exposurebox">
+	
+	<div
 	<div class="comment">
 	<span>{{$exposure->category->name}}</span>
 		@foreach($exposure->gifts as $gift)

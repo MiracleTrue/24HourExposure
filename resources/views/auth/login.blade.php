@@ -28,14 +28,14 @@
 				<span class="tipinfo"></span>
 			</div>
 
-				<input type="submit"value="登录" />	
+				<input type="submit" value="登录" />	
 		</form>
 	</div>
 </div>
-<script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/jquery.validate.js')}}"></script>
-<script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/validate-methods.js')}}"></script>
+<!--<script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/jquery.validate.js')}}"></script>
+<script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/validate-methods.js')}}"></script>-->
 <script>
-	$(function(){
+	/* $(function(){
 		var register = $(".loginform").validate({
 				rules: {
 					phone: {
@@ -71,7 +71,7 @@
 		
 			});
 		
-	})
+	}) */
 </script>
 @include('layouts._footer')
 @endsection

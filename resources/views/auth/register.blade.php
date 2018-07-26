@@ -69,10 +69,7 @@
 				 var phoneNum=$(".phonenum").val();
 				 
 				 if(phonereg.test(phoneNum)){
-					 btn = thisBtn;
-					 btn.disabled = true; 
-					 btn.value = nums+'秒后获取';
-					 clock = setInterval(doLoop, 1000);
+					
 					 $(thisBtn).parent().parent().find('.tipinfo').text("");
 					 $.ajax({
 						 type:'post',
@@ -84,6 +81,10 @@
 						 },
 						 success:function(res){
 							 /* console.log(res) */
+							 btn = thisBtn;
+							 btn.disabled = true; 
+							 btn.value = nums+'秒后获取';
+							 clock = setInterval(doLoop, 1000);
 						 },
 						 error:function(XMLHttpRequest, textStatus, errorThrown){
 							 console.log(XMLHttpRequest);
