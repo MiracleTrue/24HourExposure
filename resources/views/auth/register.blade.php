@@ -68,7 +68,7 @@
 				 var phonereg=/^[1][3,4,5,7,8][0-9]{9}$/;
 				 var phoneNum=$(".phonenum").val();
 				 
-				 if(phonereg.test(phoneNum) || true){
+				 if(phonereg.test(phoneNum)){
 					 btn = thisBtn;
 					 btn.disabled = true; 
 					 btn.value = nums+'秒后获取';

@@ -34,7 +34,6 @@
 </div>
 <script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/jquery.validate.js')}}"></script>
 <script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/validate-methods.js')}}"></script>
-{{--<script src="{{asset('web/library/jquery.form/jquery.form.js')}}"></script>--}}
 <script>
 	$(function(){
 		var register = $(".loginform").validate({
