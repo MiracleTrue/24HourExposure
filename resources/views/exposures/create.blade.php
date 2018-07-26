@@ -15,10 +15,10 @@
 			<div>
 			<p>
 				<span>选择分类：</span>
-				<select name="category_id" >
+				<select name="category_id">
 					<option value="">全部</option> 
 					@foreach($categories as $item)
-						<option value="{{$item->id}}">{{$item->name}}</option>
+						<option  @if($item->id == old("category_id")) selected="selected" @endif value="{{$item->id}}">{{$item->name}}</option>
 					@endforeach
 				</select>
 			</p>
@@ -27,21 +27,21 @@
 			<div>
 				<p>
 					<span>曝光对象：</span>
-					<input name="name" type="" placeholder=""  />
+					<input name="name" type="" placeholder="" value="{{ old('name') }}"  />
 				</p>
 				<span class="tipinfo"></span>
 			</div>
 			<div>
 				<p>
 					<span>标题：</span>
-					<input name="title" type="text" placeholder="请输入要曝光的对象" />
+					<input name="title" type="text" placeholder="请输入要曝光的对象" value="{{ old('title') }}" />
 				</p>
 				<span class="tipinfo"></span>
 			</div>
 			<div>
 				<p class="content">
 					<span>内容：</span>
-					<textarea name="content"></textarea>
+					<textarea name="content" >{{ old('content') }}</textarea>
 				</p>
 				<span class="tipinfo"></span>
 			</div>

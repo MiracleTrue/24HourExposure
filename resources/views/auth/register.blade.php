@@ -16,7 +16,7 @@
 					<div>
 						<p>
 								<span>手机号：</span>
-								<input class="phonenum form-control" type="text" name="phone" value="" />
+								<input class="phonenum form-control" type="text" name="phone" value="{{ old('phone') }}" />
 								<input class="code" type="button" value="获取验证码" name="code" onclick="sendCode(this)"/>
 						</p>
 					
