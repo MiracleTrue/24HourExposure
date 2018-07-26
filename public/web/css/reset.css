@@ -1,7 +1,7 @@
 *{word-wrap:break-word;}
 html,body,h1,h2,h3,h4,h5,h6,hr,p,iframe,dl,dt,dd,ul,ol,li,pre,form,button,input,textarea,th,td,fieldset{margin:0;padding:0}
 ul,ol,dl{list-style-type:none}
-html,body{*position:static;background: #FFFFFF !important;-webkit-overflow-scrolling: touch;font-size: 13.335vw;}
+html,body{*position:static;background: #FFFFFF !important;-webkit-overflow-scrolling: touch;font-size: 13.335vw;width: 100%;overflow-x: hidden;}
 html{font-family: sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
 address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:400}
 input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit}

@@ -26,7 +26,7 @@
 			<p>
 				<input type="hidden" name="_method" value="PUT" />
 				<span>昵称：</span>
-				<input  name="name" type="text" value="{{$user->name}}" onchange="namesubmit(this)" />
+				<input class="nameedit"  name="name" type="text" value="{{$user->name}}" onchange="namesubmit(this)" />
 			</p>
 		</form>
 		<p>
@@ -61,15 +61,19 @@
 				$(".namesubmit").ajaxSubmit({
 					url: '{{ route("users.update",$user->id) }}',
 					type:"post",
+					data:{
+						_token:'{{csrf_token()}}'
+					},
 					success: function(res) {
 						console.log(res);
 						$(ele).val(res.user.name )
 					}
 			
 				});
+				
 		}
 		function disabled(){
-			alert("电话号码和身份证号只能在后台修改")
+			alert("电话号码和身份证号不可修改")
 		}
 		
 		
