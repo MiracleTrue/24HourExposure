@@ -56,11 +56,15 @@
 					
 				</form>
 			</div>
+			<!--<div class="loading">
+				<img style="position: absolute; left: 50%; top:30%;" src="{{asset('web/img/loader.gif')}}" />
+			</div>-->
 		</div>
 		<script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/jquery.validate.js')}}"></script>
 		<script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/validate-methods.js')}}"></script>
-		<script src="{{asset('web/library/jquery.form/jquery.form.js')}}"></script>
 		<script>
+			/* $(".loading").hide(); */
+			
 			var clock = '';
 			 var nums = 5;
 			 var btn;
@@ -68,8 +72,7 @@
 				 var phonereg=/^[1][3,4,5,7,8][0-9]{9}$/;
 				 var phoneNum=$(".phonenum").val();
 				 
-				 if(phonereg.test(phoneNum)){
-					
+				 if(phonereg.test(phoneNum)){		
 					 $(thisBtn).parent().parent().find('.tipinfo').text("");
 					 $.ajax({
 						 type:'post',
@@ -87,15 +90,15 @@
 							 clock = setInterval(doLoop, 1000);
 						 },
 						 error:function(XMLHttpRequest, textStatus, errorThrown){
-							 console.log(XMLHttpRequest);
+							/*  console.log(XMLHttpRequest);
 								console.log(JSON.parse( XMLHttpRequest.responseText));
 								console.log(JSON.parse( XMLHttpRequest.responseText).errors);
-							 console.log(XMLHttpRequest.status);
+							 console.log(XMLHttpRequest.status); */
 								if(XMLHttpRequest.status==422){
 									
 									var errorsMassage="";
 									for(var i in JSON.parse( XMLHttpRequest.responseText).errors){
-										console.log(JSON.parse( XMLHttpRequest.responseText).errors[i])
+										/* console.log(JSON.parse( XMLHttpRequest.responseText).errors[i]) */
 										errorsMassage+=JSON.parse( XMLHttpRequest.responseText).errors[i];
 									}
 									alert(errorsMassage);
@@ -174,11 +177,13 @@
 								
 				 	
 				 			},
-							errorPlacement: function(error, element) {                             //错误信息位置设置方法
-							 error.appendTo( element.parent().parent().find(".tipinfo"));                            //这里的element是录入数据的对象
+							errorPlacement: function(error, element) {                             
+							 error.appendTo( element.parent().parent().find(".tipinfo"));                            
 							 },
-							debug:false,			
 				 			submitHandler: function(form) {
+							/* 	$('input[type="submit"]').click(function(){
+									$(".loading").show();
+								}) */
 										$("input[type='submit']").attr("disabled","disabled");
 										$(form).submit();
 										
