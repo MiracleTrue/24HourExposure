@@ -17,12 +17,28 @@ use Yansongda\Pay\Pay;
 class PaymentController extends Controller
 {
 
-    public static function alipayConfig()
+    public static function alipayConfig($config = null)
     {
-        return array_merge(config('pay.alipay'), [
-            'notify_url' => route('payment.gift.alipay_notify'),
-            'return_url' => url()->previous(),
-        ]);
+
+        if (is_array($config))
+        {
+            $final_config = array_merge(array_merge(config('pay.alipay'), [
+                'notify_url' => route('payment.gift.alipay_notify'),
+                'return_url' => url()->previous(),
+            ]), $config);
+        } else
+        {
+            $final_config = array_merge(config('pay.alipay'), [
+                'notify_url' => route('payment.gift.alipay_notify'),
+                'return_url' => url()->previous(),
+            ]);
+        }
+
+
+        dd($final_config);
+
+
+        return $final_config;
     }
 
     /**
@@ -80,7 +96,10 @@ class PaymentController extends Controller
         });
         $this->dispatch(new CloseOrder($order, config('app.order_ttl')));
 
-        return Pay::alipay(self::alipayConfig())->wap([
+        return Pay::alipay(self::alipayConfig([
+                'return_url' => route('exposures.show', $exposure->id),
+            ]
+        ))->wap([
             'out_trade_no' => $order->no, // 订单编号，需保证在商户端不重复
             'total_amount' => $order->total_amount, // 订单金额，单位元，支持小数点后两位
             'subject' => '支付 24HourExposure  礼物的订单：' . $order->no, // 订单标题
