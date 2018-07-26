@@ -34,10 +34,6 @@ class PaymentController extends Controller
             ]);
         }
 
-
-        dd($final_config);
-
-
         return $final_config;
     }
 
