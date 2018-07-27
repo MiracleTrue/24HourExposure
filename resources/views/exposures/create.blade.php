@@ -11,7 +11,7 @@
 			
 		</div>
 		@include('common.error')
-		<form class="create" action="{{ route('exposures.store') }}" method="post">
+		<form id="create" class="create" action="{{ route('exposures.store') }}" method="post">
 			{{ csrf_field() }}
 			<div>
 			<p>
@@ -57,28 +57,29 @@
 		</form>
 	</div>
     
-   <script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/jquery.validate.js')}}"></script>
+  <script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/jquery.validate.js')}}"></script>
+	 <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>-->
    <script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/validate-methods.js')}}"></script>
 	 <script type="text/javascript" src="{{asset('web/library/jqueryJson/jquery.json.js')}}"></script>
 
 	<script>
 
 		$(function(){	
-		$(".add").on("click",function(){
-		var val =	$(this).parent().siblings('input').val();
-		val++
-			
-		$(this).parent().siblings('input').val(val)
-		})
-		$(".reduce").on("click",function(){
-		var val =	$(this).parent().siblings('input').val();
-		if(val>0){
-			val--
-		}
-		
-			
-		$(this).parent().siblings('input').val(val)
-		})
+				$(".add").on("click",function(){
+				var val =	$(this).parent().siblings('input').val();
+				val++
+					
+				$(this).parent().siblings('input').val(val)
+				})
+				$(".reduce").on("click",function(){
+				var val =	$(this).parent().siblings('input').val();
+				if(val>0){
+					val--
+				}
+				
+					
+				$(this).parent().siblings('input').val(val)
+				})
 		
 		
 		
@@ -110,7 +111,7 @@
 			
 		
 		
-	  $(".create").validate({
+	  $("#create").validate({
 				rules: {
 					category:{
 						required:true,
@@ -145,11 +146,12 @@
 					}
 				},
 				errorPlacement: function(error, element) {                             //错误信息位置设置方法
-				error.appendTo( element.parent().parent().find(".tipinfo"));                            //这里的element是录入数据的对象
+				error.appendTo( element.parent().parent().find(".tipinfo"));           //这里的element是录入数据的对象
 				},
 				submitHandler: function(form) {
+						$("#create input[type='submit']").attr("disabled","disabled");
+						 form.submit();
 						
-						$(form).submit();
 							
 				}
 		

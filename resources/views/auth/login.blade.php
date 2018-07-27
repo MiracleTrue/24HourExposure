@@ -11,7 +11,7 @@
 	</div>
 	@include('common.error')
 	<div>
-		<form class="loginform" action="{{ route('login') }}" method="post">
+		<form id="loginform" class="loginform" action="{{ route('login') }}" method="post">
 			{{ csrf_field() }}
 			<div>
 				<p>
@@ -32,16 +32,17 @@
 		</form>
 	</div>
 </div>
-<!--<script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/jquery.validate.js')}}"></script>
-<script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/validate-methods.js')}}"></script>-->
-<script>
-	/* $(function(){
-		var register = $(".loginform").validate({
+<script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/jquery.validate.js')}}"></script>
+<!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>-->
+<script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/validate-methods.js')}}"></script>
+<script type="text/javascript">
+	$().ready(function() {
+		
+		
+		$("#loginform").validate({
 				rules: {
 					phone: {
 						required: true,
-						isMobile:true
-		
 					},
 					password:{
 						required:true,
@@ -52,8 +53,6 @@
 				messages: {
 					phone: {
 						required: "请输入账号",
-						isMobile: "请输入正确账号"
-		
 					},
 					
 					password:{
@@ -62,16 +61,14 @@
 					}
 				},
 				errorPlacement: function(error, element) {                            
-					error.appendTo(element.parent().parent().find(".tipinfo"));                           
+					error.appendTo(element.parent().parent().find(".tipinfo"));
 				},
 				submitHandler: function(form) {
-					$(".loginform input[type='submit']").attr("disabled","disabled");
-					$(form).submit();
+                    $("#loginform input[type='submit']").attr("disabled","disabled");
+					form.submit();
 				}
-		
 			});
-		
-	}) */
+	})
 </script>
 @include('layouts._footer')
 @endsection

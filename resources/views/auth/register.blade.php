@@ -61,6 +61,7 @@
 			</div>-->
 		</div>
 		<script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/jquery.validate.js')}}"></script>
+		<!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>-->
 		<script type="text/javascript" src="{{asset('web/library/jquery.validation/1.14.0/validate-methods.js')}}"></script>
 		<script>
 			/* $(".loading").hide(); */
@@ -181,11 +182,9 @@
 							 error.appendTo( element.parent().parent().find(".tipinfo"));                            
 							 },
 				 			submitHandler: function(form) {
-							/* 	$('input[type="submit"]').click(function(){
-									$(".loading").show();
-								}) */
+							
 										$("input[type='submit']").attr("disabled","disabled");
-										$(form).submit();
+										form.submit();
 										
 				 			}
 				 	
