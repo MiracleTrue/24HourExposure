@@ -2,7 +2,7 @@
 ```
 //Linux服务器环境要求
 支持Laravel 5.5 | PHP7.1 | MySql5.7 | Redis3.2
-Composer | Git客户端 | crond服务
+Composer | Git客户端 | crond服务 | Supervisor进程管理工具
 
 //安装
 composer install

@@ -17,7 +17,6 @@ class UsersController extends Controller
 
     /**
      * Index interface.
-     *
      * @return Content
      */
     public function index()
@@ -32,7 +31,6 @@ class UsersController extends Controller
 
     /**
      * Edit interface.
-     *
      * @param $id
      * @return Content
      */
@@ -49,7 +47,6 @@ class UsersController extends Controller
 
     /**
      * Create interface.
-     *
      * @return Content
      */
     public function create()
@@ -65,7 +62,6 @@ class UsersController extends Controller
 
     /**
      * Make a grid builder.
-     *
      * @return Grid
      */
     protected function grid()
@@ -73,7 +69,7 @@ class UsersController extends Controller
         return Admin::grid(User::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
-            $grid->avatar('头像')->image('', 40);
+            $grid->avatar('头像')->image('', 40, 40);
             $grid->phone('手机号');
             $grid->name('用户名');
             $grid->gift_amount('赠送礼物金额')->sortable();
@@ -104,7 +100,6 @@ class UsersController extends Controller
 
     /**
      * Make a form builder.
-     *
      * @return Form
      */
     protected function form()
