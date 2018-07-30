@@ -87,7 +87,7 @@ class GiftController extends Controller
             $form->display('id', 'ID');
 
             $form->text('title', '名称')->rules('required');
-            $form->image('image', '图片')->move('gifts')->rules('required|image');
+            $form->image('image', '图片')->uniqueName()->move('gifts')->rules('required|image');
             $form->text('price', '价格')->rules('required|numeric|min:0.01');
             $form->text('sort', '排序')->default(0)->rules('required|integer');
 

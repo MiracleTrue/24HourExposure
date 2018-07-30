@@ -93,7 +93,7 @@ class NewsController extends Controller
             $form->display('id', 'ID');
 
             $form->select('category_id', '分类')->options($categories)->rules('required');
-            $form->image('image', '缩略图')->move('original/' . date('Ym', now()->timestamp))->rules('required|image');
+            $form->image('image', '缩略图')->uniqueName()->move('original/' . date('Ym', now()->timestamp))->rules('required|image');
             $form->text('title', '标题')->rules('required');
             $form->editor('content', '内容')->rules('required');
 
