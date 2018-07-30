@@ -54,4 +54,9 @@ a{
 a:active{
 	text-decoration: none;
 }
-
+select{
+	-webkit-appearance: none;
+	appearance: none;
+	background: url(../img/selectsanjiao.png) no-repeat 2.2rem center;
+	text-indent: 5px;
+}
