@@ -68,7 +68,7 @@ class NewsCategoriesController extends Controller
 
             $grid->id('ID')->sortable();
             $grid->name('名称');
-            $grid->item_count('新闻数量')->sortable();
+//            $grid->item_count('新闻数量')->sortable();
             $grid->sort('排序')->sortable();
             $grid->created_at('创建时间')->sortable();
             $grid->updated_at('更新时间')->sortable();
