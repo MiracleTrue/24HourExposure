@@ -15,7 +15,7 @@
 			{{ csrf_field() }}
 			<div>
 				<p>
-					<span>账号：</span>
+					<span>手机号：</span>
 					<input class="phone" type="text" name="phone" placeholder=""/>
 				</p>
 				<span class="tipinfo"></span>
