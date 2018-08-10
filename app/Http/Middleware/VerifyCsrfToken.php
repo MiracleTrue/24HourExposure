@@ -13,6 +13,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        'payment/gift/alipay_notify'
+        'payment/gift/alipay_notify',
+        'payment/gift/wechat_notify'
     ];
 }
