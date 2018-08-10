@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     const PAYMENT_METHOD_ALIPAY = 'alipay';
+    const PAYMENT_METHOD_WECHAT = 'wechat';
 
     public static $paymentMethodMap = [
         self::PAYMENT_METHOD_ALIPAY => '支付宝',
+        self::PAYMENT_METHOD_WECHAT => '微信支付',
     ];
 
     protected $fillable = [

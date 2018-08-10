@@ -39,7 +39,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('exposure_comments', 'ExposureCommentsController@store')->name('exposure_comments.store');/*曝光评论*/
 
     /*支付*/
-    Route::get('payment/gift/alipay', 'PaymentController@giftByAlipay')->name('payment.gift.alipay');/*赠送礼物*/
+    Route::get('payment/gift/alipay', 'PaymentController@giftByAlipay')->name('payment.gift.alipay');/*赠送礼物(支付宝)*/
+    Route::get('payment/gift/wechat', 'PaymentController@giftByWechat')->name('payment.gift.wechat');/*赠送礼物(微信支付)*/
+
 
 });
 
@@ -58,3 +60,4 @@ Route::get('news/{news}', 'NewsController@show')->name('news.show');/*资讯详�
 
 /*支付回调*/
 Route::post('payment/gift/alipay_notify', 'PaymentController@giftAlipayNotify')->name('payment.gift.alipay_notify');/*赠送礼物支付宝回调*/
+Route::post('payment/gift/wechat_notify', 'PaymentController@giftWechatNotify')->name('payment.gift.wechat_notify');/*赠送礼物支付宝回调*/
