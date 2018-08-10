@@ -1,13 +1,104 @@
 @extends('layouts.app')
 
 @section('title','')
+<style>
+	.pay_method {
+		width: 90%;
+		font-size: 0.13rem;
+		color: #333;
+		background: #EEEEEE;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		padding: 10px 5px;
+		border-radius: 25px;
+		 transform: translate(-50%,-50%);
+		 display: none;
+	}
+ .pay_method label {
+    height: 1rem;
+    border-bottom: 1px solid #f2f2f2; 
+    line-height: 0.7rem;
+    display: flex;
+		align-items: center;
+		position: relative;
+}
+ .pay_method label span{
+	 margin-left: 0.3rem;
+	 font-size: 0.25rem;
+ }
+ .pay_method label img:nth-of-type(1) {
+    width: 0.6rem;
+    height: 0.6rem;
+    display: block;
+		margin-left: 0.2rem;
+}
+input[type="radio"]{
+ position: absolute;
+ right: 10px;
+ width: 0.3rem;
+ height: 0.3rem;
+}
+input[type="button"]{
+	
+	    width: 1.5rem;
+    line-height: 0.5rem;
+    height: 0.5rem;
+    background: #d71f21;
+    color: #FFFFFF;
+    text-align: center;
+    border: none;
+    border-radius: 20px;
+		display: block;
+		margin-left: 20%;
+}
 
+/* input[type="checkbox"],
+input[type="radio"] {
+	display: none;
+} */
+ 
+input[type="radio"]+ i {
+	border-radius: 7px;
+}
+ 
+input[type="checkbox"]:checked+ i,
+input[type="radio"]:checked+ i {
+	background: #2489c5;
+}
+
+.pay_confirm{
+	display: flex;
+	align-content: center;
+	justify-content: center;
+}
+	.pay_confirm div{
+		width: 1.5rem;
+		line-height: 0.5rem;
+		height: 0.5rem;
+		background: #00aa6d;
+		color: #FFFFFF;
+		text-align: center;
+		border: none;
+		border-radius: 20px;
+		display: block;
+	}
+</style>
 @section('content')
  
 	<div class="addbox">
 		<div class="header">
 			<a href="{{route('root')}}" class="goback"><</a>
 			<span>增加曝光</span>
+			
+		</div>
+		<div class="pay_method">
+			<label style=""><img src="{{asset('web/img/alipay.png')}}"><span>支付宝支付</span> <input type="radio" name="payto_method" checked="checked" value="alipay" /></label>
+			<label style=""><img src="{{asset('web/img/wechat.png')}}"><span>微信支付</span> <input type="radio" name="payto_method"  value="wechat" /></label>
+			<div class="pay_confirm">
+				<div class="pay_cancel">取消</div>
+				<input class="pay_submit" type="button" value="立即支付" />
+			</div>
 			
 		</div>
 		@include('common.error')
@@ -54,6 +145,8 @@
 				@endforeach	
 			</div>
 			<input class="nextstep" type="submit" value="提交"/ >
+			
+			<input type="hidden" name="pay_method" value=""/>
 		</form>
 	</div>
     
@@ -63,7 +156,10 @@
 	 <script type="text/javascript" src="{{asset('web/library/jqueryJson/jquery.json.js')}}"></script>
 
 	<script>
-
+		$(".pay_method").hide();
+$(".pay_cancel").click(function(){
+			$(".pay_method").hide();
+		})
 		$(function(){	
 				$(".add").on("click",function(){
 				var val =	$(this).parent().siblings('input').val();
@@ -87,7 +183,7 @@
 		
 		
 		 	var strjson="";
-					$('.nextstep').click(function(){ 
+					/* $('.nextstep').click(function(){ 
 						var myJson=new Array();
 						$(".comment input").each(function(i,index){
 							var obj=new Object();
@@ -104,11 +200,14 @@
 						if(strjson=='[]'){
 							$("input[name='gifts']").attr("name","");
 						}else{
+							$(".pay_method").show();
+							var pay=$('input:radio[name="pay_method"]:checked').val();
+							$("input[name='pay_method']").val(pay);
 							$("input[name='gifts']").val(strjson);
 						}
 						
 				}) 
-			
+			 */
 		
 		
 	  $("#create").validate({
@@ -149,8 +248,46 @@
 				error.appendTo( element.parent().parent().find(".tipinfo"));           //这里的element是录入数据的对象
 				},
 				submitHandler: function(form) {
-						$("#create input[type='submit']").attr("disabled","disabled");
-						 form.submit();
+						/* $("#create input[type='submit']").attr("disabled","disabled"); */
+						
+							/* 	$('.nextstep').click(function(){ */
+									var myJson=new Array();
+									$(".comment input").each(function(i,index){
+										var obj=new Object();
+										obj.id=$(index).attr('data_id');
+										obj.number=$(index).val();
+										if(obj.number!=0){
+											myJson.push(obj);
+										}
+										
+									})
+									
+									strjson = $.toJSON(myJson);
+									console.log(strjson)
+									if(strjson=='[]'){
+										$("input[name='gifts']").attr("name","");
+										$("#create input[type='submit']").attr("disabled","disabled"); 
+										form.submit();
+									}else{
+										$(".pay_method").show();
+										$(".pay_submit").on("click",function(){
+											var pay=$('input:radio[name="payto_method"]:checked').val();
+											/* alert(pay) */
+											$("input[name='pay_method']").val(pay);
+											/* alert($("input[name='pay_method']").val()) */
+											$("input[name='gifts']").val(strjson);
+											 $("#create input[type='submit']").attr("disabled","disabled"); 
+											form.submit();
+
+										})
+									
+									}
+									
+							/* }) */
+						
+						
+						
+						 
 						
 							
 				}
