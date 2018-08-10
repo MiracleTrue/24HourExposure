@@ -130,7 +130,7 @@ class PaymentController extends Controller
      */
     public function giftWechatNotify(Request $request)
     {
-        $pay = Pay::wechat($this->config);
+        $pay = Pay::wechat(self::wechatConfig());
 
         try
         {
