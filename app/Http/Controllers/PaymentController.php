@@ -123,33 +123,38 @@ class PaymentController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @return string|\Symfony\Component\HttpFoundation\Response
+     * @throws \Yansongda\Pay\Exceptions\InvalidSignException
+     */
     public function giftWechatNotify(Request $request)
     {
-//        // 校验输入参数
-//        $data = Pay::alipay(self::alipayConfig())->verify();
-//
-//        // $data->out_trade_no 拿到订单流水号，并在数据库中查询
-//        $order = Order::where('no', $data->out_trade_no)->where('closed', false)->first();
-//        // 正常来说不太可能出现支付了一笔不存在的订单，这个判断只是加强系统健壮性。
-//        if (!$order)
-//        {
-//            return 'fail';
-//        }
-//        // 如果这笔订单的状态已经是已支付
-//        if ($order->paid_at)
-//        {
-//            return Pay::alipay($this->alipayConfig())->success();
-//        }
-//
-//        $order->update([
-//            'paid_at' => now(), // 支付时间
-//            'payment_method' => Order::PAYMENT_METHOD_ALIPAY, // 支付方式
-//            'payment_no' => $data->trade_no, // 支付宝订单号
-//        ]);
-//
-//        event(new OrderPaid($order));
-//
-//        return Pay::alipay($this->alipayConfig())->success();
+        // 校验输入参数
+        $data = Pay::wechat(self::wechatConfig())->verify();
+
+        // $data->out_trade_no 拿到订单流水号，并在数据库中查询
+        $order = Order::where('no', $data->out_trade_no)->where('closed', false)->first();
+        // 正常来说不太可能出现支付了一笔不存在的订单，这个判断只是加强系统健壮性。
+        if (!$order)
+        {
+            return 'fail';
+        }
+        // 如果这笔订单的状态已经是已支付
+        if ($order->paid_at)
+        {
+            return Pay::wechat($this->wechatConfig())->success();
+        }
+
+        $order->update([
+            'paid_at' => now(), // 支付时间
+            'payment_method' => Order::PAYMENT_METHOD_WECHAT, // 支付方式
+            'payment_no' => $data->transaction_id,
+        ]);
+
+        event(new OrderPaid($order));
+
+        return Pay::wechat($this->wechatConfig())->success();
     }
 
     /**
