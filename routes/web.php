@@ -60,4 +60,4 @@ Route::get('news/{news}', 'NewsController@show')->name('news.show');/*资讯详�
 
 /*支付回调*/
 Route::post('payment/gift/alipay_notify', 'PaymentController@giftAlipayNotify')->name('payment.gift.alipay_notify');/*赠送礼物支付宝回调*/
-Route::post('payment/gift/wechat_notify', 'PaymentController@giftWechatNotify')->name('payment.gift.wechat_notify');/*赠送礼物支付宝回调*/
+Route::post('payment/gift/wechat_notify', 'PaymentController@giftWechatNotify')->name('payment.gift.wechat_notify');/*赠送礼物微信支付回调*/
