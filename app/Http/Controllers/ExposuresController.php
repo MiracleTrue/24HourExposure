@@ -8,6 +8,7 @@ use App\Models\ExposureCategory;
 use App\Models\ExposureComment;
 use App\Models\Gift;
 use App\Models\News;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -125,11 +126,20 @@ class ExposuresController extends Controller
 
         if ($request->has('gifts'))
         {
+            if ($request->input('pay_method') == Order::PAYMENT_METHOD_ALIPAY)
+            {
+                return redirect()->route('payment.gift.alipay', [
+                    'exposure_id' => $exposure->id,
+                    'gifts' => $request->input('gifts')
+                ]);
+            } elseif ($request->input('pay_method') == Order::PAYMENT_METHOD_WECHAT)
+            {
+                return redirect()->route('payment.gift.wechat', [
+                    'exposure_id' => $exposure->id,
+                    'gifts' => $request->input('gifts')
+                ]);
+            }
 
-            return redirect()->route('payment.gift.alipay', [
-                'exposure_id' => $exposure->id,
-                'gifts' => $request->input('gifts')
-            ]);
 
         } else
         {

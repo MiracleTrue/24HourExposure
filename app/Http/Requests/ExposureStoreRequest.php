@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Order;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Validator;
 
@@ -15,6 +16,7 @@ class ExposureStoreRequest extends Request
             'name' => ['required', 'unique:exposures,name'],
             'title' => ['required'],
             'content' => ['required'],
+            'pay_method' => ['required', 'in:' . Order::PAYMENT_METHOD_WECHAT . ',' . Order::PAYMENT_METHOD_ALIPAY],
             'gifts' => ['sometimes', 'required', 'json', function ($key, $json, $fail) {
 
                 $val = json_decode($json, true);
@@ -42,6 +44,7 @@ class ExposureStoreRequest extends Request
             'name' => '曝光对象',
             'title' => '曝光标题',
             'content' => '曝光内容',
+            'pay_method' => '支付方式',
             'gifts' => '礼物JSON',
         ];
     }
