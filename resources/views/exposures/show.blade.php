@@ -156,8 +156,8 @@ input[type="button"]{
 					
 					$(".pay_submit").on("click",function(){
 					 var pay=$('input:radio[name="pay_method"]:checked').val();
-					/* alert(pay) */
-					 if(pay="alipay"){
+					 /* alert(pay); */
+					 if(pay=="alipay"){
 						 				
 						var myJson = new Array();
 						var obj = new Object();
