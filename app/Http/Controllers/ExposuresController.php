@@ -140,7 +140,6 @@ class ExposuresController extends Controller
                 ]);
             }
 
-
         } else
         {
             return redirect()->route('exposures.show', $exposure->id);
