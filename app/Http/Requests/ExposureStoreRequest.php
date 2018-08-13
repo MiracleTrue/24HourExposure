@@ -16,7 +16,7 @@ class ExposureStoreRequest extends Request
             'name' => ['required', 'unique:exposures,name'],
             'title' => ['required'],
             'content' => ['required'],
-            'pay_method' => ['required', 'in:' . Order::PAYMENT_METHOD_WECHAT . ',' . Order::PAYMENT_METHOD_ALIPAY],
+            'pay_method' => ['in:' . Order::PAYMENT_METHOD_WECHAT . ',' . Order::PAYMENT_METHOD_ALIPAY],
             'gifts' => ['sometimes', 'required', 'json', function ($key, $json, $fail) {
 
                 $val = json_decode($json, true);
