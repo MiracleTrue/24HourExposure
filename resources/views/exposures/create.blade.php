@@ -3,6 +3,7 @@
 @section('title','')
 <style>
 	.pay_method {
+		z-index: 100;
 		width: 90%;
 		font-size: 0.13rem;
 		color: #333;
@@ -144,7 +145,7 @@ input[type="radio"]:checked+ i {
 					<div style="display: flex;"  title="{{$item->title}}"><img style="" src="{{$item->image_url}}"><input data_id="{{$item->id}}" style="width: 0.4rem;border: 1px solid #999999;height: 0.57rem;text-align: center;" type="number" min="0" value="0"/> <p class="gift_num"><span class="add" >+</span><span class="reduce">-</span></p>               </div>
 				@endforeach	
 			</div>
-			<input class="nextstep" type="submit" value="提交"/ >
+			<input class="nextstep" type="submit" value="提交" />
 			
 			<input type="hidden" name="pay_method" value=""/>
 		</form>
