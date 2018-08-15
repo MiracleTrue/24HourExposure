@@ -198,6 +198,7 @@
             $(index).click(function () {
 
                 if (isWeiXin()) {
+                //     if (1) {
 
                     window.location.href = "{{route('payment.gift.wechat_mp')}}";
 
