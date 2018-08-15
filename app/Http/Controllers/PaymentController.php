@@ -120,7 +120,7 @@ class PaymentController extends Controller
             'out_trade_no' => $order->no, // 订单编号，需保证在商户端不重复
             'total_fee' => bcmul($order->total_amount, 100), // **单位：分**
             'body' => '支付 24HourExposure  礼物的订单：' . $order->no, // 订单标题
-//            'openid' => $request->input('openid'),
+            'openid' => $request->session()->get('wechat_user')->id,
         ]);
     }
 

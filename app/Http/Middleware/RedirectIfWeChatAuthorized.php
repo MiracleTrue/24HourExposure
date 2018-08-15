@@ -19,17 +19,17 @@ class RedirectIfWeChatAuthorized
      */
     public function handle($request, Closure $next, $guard = null)
     {
-//        if (!$request->session()->has('wechat_user'))
-//        {
-//            $app = app('wechat.official_account');
-//
-//            $request->session()->put('target_url', url()->previous());
-//
-//            $response = $app->oauth->scopes(['snsapi_userinfo'])
-//                ->redirect();
-//
-//            return $response;
-//        }
+        if (!$request->session()->has('wechat_user'))
+        {
+            $app = app('wechat.official_account');
+
+            $request->session()->put('target_url', url()->previous());
+
+            $response = $app->oauth->scopes(['snsapi_userinfo'])
+                ->redirect();
+
+            return $response;
+        }
 
         Log::debug($request->session()->get('wechat_user'));
         return $next($request);
