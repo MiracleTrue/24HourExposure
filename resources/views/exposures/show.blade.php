@@ -197,11 +197,19 @@
         $(".pay").each(function (i, index) {
             $(index).click(function () {
 
-                // if (isWeiXin()) {
-                    if (1) {
+                if (isWeiXin()) {
+                    var myJson = new Array();
+                    var obj = new Object();
 
-                    window.location.href = "{{route('payment.gift.wechat_mp')}}";
+                    obj.id = $(index).attr('data-id');
+                    obj.number = 1;
+                    myJson.push(obj)
+                    var strjson = $.toJSON(myJson);
+                    console.log(strjson)
+                    $("input[name='gifts']").val(strjson);
 
+                    $('.payform').attr('action', '{{route("payment.gift.wechat_mp")}}');
+                    $('.payform').submit();
                 } else {
                     $(".pay_method").show();
                     $(".pay_submit").on("click", function () {

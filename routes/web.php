@@ -44,7 +44,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('payment/gift/wechat_mp', 'PaymentController@giftByWechatMp')->middleware('wechat.authorize')->name('payment.gift.wechat_mp');/*赠送礼物(微信支付公众号)*/
 
     /*微信公众号*/
-//    Route::get('wechat/authorize', 'WechatController@wechatAuthorize')->name('wechat.authorize');/*网页授权获取用户信息*/
     Route::get('wechat/authorize_notify', 'WechatController@wechatAuthorizeNotify')->name('wechat.authorize_notify');/*网页授权获取用户信息回调*/
 
 
