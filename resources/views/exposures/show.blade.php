@@ -179,19 +179,7 @@
         $(".pay_method").hide();
         $(".pay_cancel").click(function () {
             $(".pay_method").hide();
-        })
-        /* 判断是否为微信 */
-        /* function isWeiXin(){
-            var ua = window.navigator.userAgent.toLowerCase();
-            if(ua.match(/MicroMessenger/i) == 'micromessenger'){
-                $(".pay_method").find('p').eq(0).hide();
-                return true;
-            }else{
-                $(".pay_method").find('p').eq(1).hide();
-                return false;
-            }
-        } */
-        // isWeiXin();
+        });
 
 
         $(".pay").each(function (i, index) {
@@ -203,13 +191,41 @@
 
                     obj.id = $(index).attr('data-id');
                     obj.number = 1;
-                    myJson.push(obj)
+                    myJson.push(obj);
                     var strjson = $.toJSON(myJson);
-                    console.log(strjson)
                     $("input[name='gifts']").val(strjson);
 
-                    $('.payform').attr('action', '{{route("payment.gift.wechat_mp")}}');
-                    $('.payform').submit();
+                    $.ajax({
+                        url: '{{route("payment.gift.wechat_mp")}}',
+                        type: "GET",
+                        data: {
+                            exposure_id: $(".payform input[name='exposure_id']").val(),
+                            gifts: $(".payform input[name='gifts']").val(),
+                        },
+                        success: function (data) {
+
+                            WeixinJSBridge.invoke(
+                                'getBrandWCPayRequest', {
+                                    "appId": data.appId,     //公众号名称，由商户传入
+                                    "timeStamp": data.timeStamp,         //时间戳，自1970年以来的秒数
+                                    "nonceStr": data.nonceStr, //随机串
+                                    "package": data.package,
+                                    "signType": data.signType,         //微信签名方式：
+                                    "paySign": data.paySign //微信签名
+                                },
+                                function (res) {
+                                    if (res.err_msg == "get_brand_wcpay_request:ok") {
+                                        window.location.reload();
+                                    }
+                                });
+
+                        },
+                        error: function (e) {
+                            alert("支付失败");
+                        }
+                    });
+
+
                 } else {
                     $(".pay_method").show();
                     $(".pay_submit").on("click", function () {
