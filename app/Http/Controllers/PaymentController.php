@@ -39,17 +39,16 @@ class PaymentController extends Controller
 
     public static function wechatConfig($config = null)
     {
-
         if (is_array($config))
         {
             $final_config = array_merge(array_merge(config('pay.wechat'), [
-                'notify_url' => route('payment.gift.wechat_notify'),
+                'notify_url' => route('payment.gift.wechat_h5_notify'),
                 'return_url' => url()->previous(),
             ]), $config);
         } else
         {
             $final_config = array_merge(config('pay.wechat'), [
-                'notify_url' => route('payment.gift.wechat_notify'),
+                'notify_url' => route('payment.gift.wechat_h5_notify'),
                 'return_url' => url()->previous(),
             ]);
         }
@@ -57,12 +56,18 @@ class PaymentController extends Controller
         return $final_config;
     }
 
+
+    public function giftByWechatMp(GiftByAlipayRequest $request)
+    {
+
+    }
+
     /**
      * @param GiftByAlipayRequest $request
      * @return \Yansongda\Pay\Gateways\Wechat\WapGateway
      * @throws \Throwable
      */
-    public function giftByWechat(GiftByAlipayRequest $request)
+    public function giftByWechatH5(GiftByAlipayRequest $request)
     {
         $user = $request->user();
         $exposure = Exposure::find($request->input('exposure_id'));
@@ -71,7 +76,7 @@ class PaymentController extends Controller
 
             // 创建一个订单
             $order = new Order([
-                'payment_method' => Order::PAYMENT_METHOD_WECHAT,
+                'payment_method' => Order::PAYMENT_METHOD_WECHAT_H5,
                 'closed' => false,
                 'total_amount' => 0,
             ]);
@@ -128,7 +133,7 @@ class PaymentController extends Controller
      * @param Request $request
      * @return string|\Symfony\Component\HttpFoundation\Response
      */
-    public function giftWechatNotify(Request $request)
+    public function giftWechatH5Notify(Request $request)
     {
         $pay = Pay::wechat(self::wechatConfig());
 
@@ -151,7 +156,7 @@ class PaymentController extends Controller
 
             $order->update([
                 'paid_at' => now(), // 支付时间
-                'payment_method' => Order::PAYMENT_METHOD_WECHAT, // 支付方式
+                'payment_method' => Order::PAYMENT_METHOD_WECHAT_H5, // 支付方式
                 'payment_no' => $data->transaction_id,
             ]);
 

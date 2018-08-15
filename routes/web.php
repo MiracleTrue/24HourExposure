@@ -40,7 +40,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     /*支付*/
     Route::get('payment/gift/alipay', 'PaymentController@giftByAlipay')->name('payment.gift.alipay');/*赠送礼物(支付宝)*/
-    Route::get('payment/gift/wechat', 'PaymentController@giftByWechat')->name('payment.gift.wechat');/*赠送礼物(微信支付)*/
+    Route::get('payment/gift/wechat_h5', 'PaymentController@giftByWechatH5')->name('payment.gift.wechat_h5');/*赠送礼物(微信支付H5)*/
+    Route::get('payment/gift/wechat_mp', 'PaymentController@giftByWechatMp')->middleware('wechat.authorize')->name('payment.gift.wechat_mp');/*赠送礼物(微信支付公众号)*/
+
+    /*微信公众号*/
+//    Route::get('wechat/authorize', 'WechatController@wechatAuthorize')->name('wechat.authorize');/*网页授权获取用户信息*/
+    Route::get('wechat/authorize_notify', 'WechatController@wechatAuthorizeNotify')->name('wechat.authorize_notify');/*网页授权获取用户信息回调*/
 
 
 });
@@ -60,4 +65,5 @@ Route::get('news/{news}', 'NewsController@show')->name('news.show');/*资讯详�
 
 /*支付回调*/
 Route::post('payment/gift/alipay_notify', 'PaymentController@giftAlipayNotify')->name('payment.gift.alipay_notify');/*赠送礼物支付宝回调*/
-Route::post('payment/gift/wechat_notify', 'PaymentController@giftWechatNotify')->name('payment.gift.wechat_notify');/*赠送礼物微信支付回调*/
+Route::post('payment/gift/wechat_h5_notify', 'PaymentController@giftWechatH5Notify')->name('payment.gift.wechat_h5_notify');/*赠送礼物微信支付H5回调*/
+Route::post('payment/gift/wechat_mp_notify', 'PaymentController@giftWechatMpNotify')->name('payment.gift.wechat_mp_notify');/*赠送礼物微信支付公众号回调*/

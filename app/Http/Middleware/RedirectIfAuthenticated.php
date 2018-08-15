@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
+/*如果未登录认证则重定向*/
 class RedirectIfAuthenticated
 {
     /**

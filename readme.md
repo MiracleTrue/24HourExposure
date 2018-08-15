@@ -231,6 +231,21 @@ function active_class($condition, $activeClass = 'active', $inactiveClass = '')
 {{ active_class((if_route('category.show') && if_route_param('category', 1))) }}
 ```
 
+###### laravel-wechat 微信 SDK for Laravel, 基于 overtrue/wechat
+```
+安装
+composer require "overtrue/laravel-wechat:~4.0"
+创建配置文件：
+php artisan vendor:publish --provider="Overtrue\LaravelWeChat\ServiceProvider"
+修改应用根目录下的 config/wechat.php 中对应的参数即可。
+
+App\Http\Middleware\VerifyCsrfToken 排除微信相关的路由，如：
+protected $except = [
+    // ...
+    'wechat',
+];
+```
+
 ##
 ## Composer 常用插件:
 
