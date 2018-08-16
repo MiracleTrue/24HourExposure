@@ -252,8 +252,8 @@
                         form.submit();
                     } else {
                         $("input[name='gifts']").val(strjson);
-                        if (isWeiXin()) {
-                        // if (1) {
+                        // if (isWeiXin()) {
+                        if (1) {
 
                             $.ajax({
                                 url: '{{route("exposures.store")}}',

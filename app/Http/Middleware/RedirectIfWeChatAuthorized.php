@@ -19,6 +19,8 @@ class RedirectIfWeChatAuthorized
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        Log::debug($request->session()->get('wechat_user'));
+
         if (!$request->session()->has('wechat_user'))
         {
             $app = app('wechat.official_account');
@@ -31,7 +33,6 @@ class RedirectIfWeChatAuthorized
             return $response;
         }
 
-        Log::debug($request->session()->get('wechat_user'));
         return $next($request);
     }
 }
