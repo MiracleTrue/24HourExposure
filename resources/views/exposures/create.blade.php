@@ -291,6 +291,10 @@
                                                     if (res2.err_msg == "get_brand_wcpay_request:ok") {
                                                         window.location.href = '/exposures/' + res.exposure_id;
                                                     }
+                                                    else {
+                                                        alert("支付失败");
+                                                        window.location.href = '/exposures/' + res.exposure_id;
+                                                    }
                                                 });
 
                                         },
