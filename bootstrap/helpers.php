@@ -30,3 +30,14 @@ function get_client_ip()
 
     return preg_match('/[\d\.]{7,15}/', $ip, $matches) ? $matches [0] : '';
 }
+
+function is_wechat_browser()
+{
+    if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false)
+    {
+        return true;
+    } else
+    {
+        return false;
+    }
+}

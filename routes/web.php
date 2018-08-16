@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     /*曝光*/
-    Route::get('exposures/create', 'ExposuresController@create')->name('exposures.create');/*曝光发布页面*/
+    Route::get('exposures/create', 'ExposuresController@create')->middleware('wechat.authorize')->name('exposures.create');/*曝光发布页面*/
     Route::post('exposures', 'ExposuresController@store')->name('exposures.store');/*曝光发布*/
 
 
@@ -55,7 +55,7 @@ Route::get('locations/relocation', 'LocationsController@relocation')->name('loca
 
 /*曝光*/
 Route::get('exposures', 'ExposuresController@index')->name('exposures.index');/*曝光台*/
-Route::get('exposures/{exposure}', 'ExposuresController@show')->name('exposures.show');/*曝光详情*/
+Route::get('exposures/{exposure}', 'ExposuresController@show')->middleware('wechat.authorize')->name('exposures.show');/*曝光详情*/
 
 /*新闻*/
 Route::get('news', 'NewsController@index')->name('news.index');/*资讯中心*/
