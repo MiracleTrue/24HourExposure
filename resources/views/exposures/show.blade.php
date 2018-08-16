@@ -185,8 +185,7 @@
         $(".pay").each(function (i, index) {
             $(index).click(function () {
 
-                // if (isWeiXin()) {
-                    if (1) {
+                if (isWeiXin()) {
                     var myJson = new Array();
                     var obj = new Object();
 
