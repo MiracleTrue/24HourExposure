@@ -186,6 +186,7 @@
             $(index).click(function () {
 
                 if (isWeiXin()) {
+                    // if (1) {
                     var myJson = new Array();
                     var obj = new Object();
 
