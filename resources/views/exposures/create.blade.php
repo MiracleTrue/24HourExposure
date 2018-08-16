@@ -102,7 +102,7 @@
         <div class="pay_method">
             <label style=""><img src="{{asset('web/img/alipay.png')}}"><span>支付宝支付</span> <input type="radio" name="payto_method" checked="checked"
                                                                                                  value="alipay"/></label>
-            <label style=""><img src="{{asset('web/img/wechat.png')}}"><span>微信支付</span> <input type="radio" name="payto_method" value="wechat"/></label>
+            <label style=""><img src="{{asset('web/img/wechat.png')}}"><span>微信支付</span> <input type="radio" name="payto_method" value="wechat_h5"/></label>
             <div class="pay_confirm">
                 <div class="pay_cancel">取消</div>
                 <input class="pay_submit" type="button" value="立即支付"/>
@@ -190,31 +190,6 @@
 
 
             var strjson = "";
-            /* $('.nextstep').click(function(){
-                var myJson=new Array();
-                $(".comment input").each(function(i,index){
-                    var obj=new Object();
-                    obj.id=$(index).attr('data_id');
-                    obj.number=$(index).val();
-                    if(obj.number!=0){
-                        myJson.push(obj);
-                    }
-
-                })
-
-                strjson = $.toJSON(myJson);
-                console.log(strjson)
-                if(strjson=='[]'){
-                    $("input[name='gifts']").attr("name","");
-                }else{
-                    $(".pay_method").show();
-                    var pay=$('input:radio[name="pay_method"]:checked').val();
-                    $("input[name='pay_method']").val(pay);
-                    $("input[name='gifts']").val(strjson);
-                }
-
-        })
-     */
 
 
             $("#create").validate({
@@ -255,9 +230,7 @@
                     error.appendTo(element.parent().parent().find(".tipinfo"));           //这里的element是录入数据的对象
                 },
                 submitHandler: function (form) {
-                    /* $("#create input[type='submit']").attr("disabled","disabled"); */
 
-                    /* 	$('.nextstep').click(function(){ */
                     var myJson = new Array();
                     $(".comment input").each(function (i, index) {
                         var obj = new Object();
@@ -270,7 +243,7 @@
                     })
 
                     strjson = $.toJSON(myJson);
-                    console.log(strjson)
+                    console.log(strjson);
                     if (strjson == '[]') {
                         $("input[name='gifts']").attr("name", "");
                         $("#create input[type='submit']").attr("disabled", "disabled");
@@ -278,17 +251,88 @@
                         $("input[name='pay_method']").val(pay);
                         form.submit();
                     } else {
-                        $(".pay_method").show();
-                        $(".pay_submit").on("click", function () {
-                            var pay = $('input:radio[name="payto_method"]:checked').val();
-                            $("input[name='pay_method']").val(pay);
-                            /* alert($("input[name='pay_method']").val()) */
-                            $("input[name='gifts']").val(strjson);
-                            $("#create input[type='submit']").attr("disabled", "disabled");
-                            form.submit();
+                        $("input[name='gifts']").val(strjson);
+                        if (isWeiXin()) {
+                        // if (1) {
 
-                        })
-									
+                            $.ajax({
+                                url: '{{route("exposures.store")}}',
+                                type: "POST",
+                                data: {
+                                    pay_method: 'wechat_mp',
+                                    category_id: $(form).find("select[name='category_id']").val(),
+                                    name: $(form).find("input[name='name']").val(),
+                                    title: $(form).find("input[name='title']").val(),
+                                    content: $(form).find("textarea[name='content']").val(),
+                                    gifts: $(form).find("input[name='gifts']").val(),
+                                    _token: "{{csrf_token()}}",
+                                },
+                                success: function (res) {
+
+                                    $.ajax({
+                                        url: '{{route("payment.gift.wechat_mp")}}',
+                                        type: "GET",
+                                        data: {
+                                            exposure_id: res.exposure_id,
+                                            gifts: res.gifts,
+                                        },
+                                        success: function (data) {
+
+                                            WeixinJSBridge.invoke(
+                                                'getBrandWCPayRequest', {
+                                                    "appId": data.appId,     //公众号名称，由商户传入
+                                                    "timeStamp": data.timeStamp,         //时间戳，自1970年以来的秒数
+                                                    "nonceStr": data.nonceStr, //随机串
+                                                    "package": data.package,
+                                                    "signType": data.signType,         //微信签名方式：
+                                                    "paySign": data.paySign //微信签名
+                                                },
+                                                function (res2) {
+                                                    if (res2.err_msg == "get_brand_wcpay_request:ok") {
+                                                        window.location.href = '/exposures/' + res.exposure_id;
+                                                    }
+                                                });
+
+                                        },
+                                        error: function (e) {
+                                            alert("支付失败");
+                                            window.location.href = '/exposures/' + res.exposure_id;
+                                        }
+                                    });
+
+                                    // WeixinJSBridge.invoke(
+                                    //     'getBrandWCPayRequest', {
+                                    //         "appId": data.appId,     //公众号名称，由商户传入
+                                    //         "timeStamp": data.timeStamp,         //时间戳，自1970年以来的秒数
+                                    //         "nonceStr": data.nonceStr, //随机串
+                                    //         "package": data.package,
+                                    //         "signType": data.signType,         //微信签名方式：
+                                    //         "paySign": data.paySign //微信签名
+                                    //     },
+                                    //     function (res) {
+                                    //         if (res.err_msg == "get_brand_wcpay_request:ok") {
+                                    //             window.location.reload();
+                                    //         }
+                                    //     });
+
+                                },
+                                error: function (e) {
+                                    alert("请填写完整信息");
+                                }
+                            });
+
+
+                        } else {
+                            $(".pay_method").show();
+                            $(".pay_submit").on("click", function () {
+                                var pay = $('input:radio[name="payto_method"]:checked').val();
+                                $("input[name='pay_method']").val(pay);
+                                /* alert($("input[name='pay_method']").val()) */
+                                $("#create input[type='submit']").attr("disabled", "disabled");
+                                form.submit();
+                            });
+                        }
+
                     }
 
                     /* }) */

@@ -132,12 +132,18 @@ class ExposuresController extends Controller
                     'exposure_id' => $exposure->id,
                     'gifts' => $request->input('gifts')
                 ]);
-            } elseif ($request->input('pay_method') == Order::PAYMENT_METHOD_WECHAT)
+            } elseif ($request->input('pay_method') == Order::PAYMENT_METHOD_WECHAT_H5)
             {
-                return redirect()->route('payment.gift.wechat', [
+                return redirect()->route('payment.gift.wechat_h5', [
                     'exposure_id' => $exposure->id,
                     'gifts' => $request->input('gifts')
                 ]);
+            } elseif ($request->input('pay_method') == Order::PAYMENT_METHOD_WECHAT_MP)
+            {
+                return [
+                    'exposure_id' => $exposure->id,
+                    'gifts' => $request->input('gifts')
+                ];
             }
 
         } else

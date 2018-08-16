@@ -65,6 +65,7 @@ class PaymentController extends Controller
     public function giftByWechatMp(GiftByAlipayRequest $request)
     {
         $user = $request->user();
+        return $user;
         $exposure = Exposure::find($request->input('exposure_id'));
         // 开启一个数据库事务
         $order = DB::transaction(function () use ($user, $request, $exposure) {
