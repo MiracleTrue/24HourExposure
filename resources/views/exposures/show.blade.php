@@ -104,7 +104,7 @@
     <div class="exposurebox">
         <div class="header">
             <a href="{{route('root')}}"><</a>
-            <span>曝光详情</span>
+            <span>对象详情</span>
         </div>
 
         <!-- 支付方式选择 -->
@@ -127,13 +127,13 @@
                 <div class="pay" data-id="{{$gift->id}}" title="{{$gift->title}}"><img src="{{$gift->image_url}}">{{$gift->sum}}</div>
             @endforeach
         </div>
-        <!--曝光对象-->
+        <!--对象-->
         <div class="exposure_object">
             <p class="date">{{$exposure->created_at}}</p>
             <div class="exposure_objecttitle">
                 <img src="{{$exposure->user->avatar_url}}"/>
                 <span class="name">{{$exposure->user->name}}</span>
-                <span>曝光对象：<em>{{$exposure->name}}</em></span>
+                <span>对象：<em>{{$exposure->name}}</em></span>
             </div>
             <div class="exposure_content">
                 <p>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', '24小时曝光')</title>
+    <title>@yield('title', '24时刻')</title>
     <!-- 样式 -->
     {{--<link href="{{ mix('css/app.css') }}" rel="stylesheet">--}}
     <link rel="stylesheet" type="text/css" href="{{asset('web/css/reset.css')}}"/>
@@ -24,7 +24,6 @@
 
     <link rel="stylesheet" href="{{asset('web/library/font-awesome-4.7.0/css/font-awesome.min.css')}}">
 
-    <!--<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>-->
     <script type="text/javascript" src="{{asset('web/library/jquery/1.9.1/jquery.min.js')}}"></script>
 
     <script type="text/javascript" src="{{asset('web/js/rem.js')}}"></script>

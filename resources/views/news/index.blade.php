@@ -59,17 +59,10 @@
 
 	
 	</ul>
+
 	{{ $news->appends($filters)->render() }}
-	<!--page-->
-	<!--<div class="page">
-		<div>
-			<a class="pageselect">上一页</a>
-			<a class="active">1</a>
-			<a>2</a>
-			<a class="pageselect">下一页</a>
-			<a class="pageselect">末页</a>
-		</div>
-	</div>-->
+
+
 </div>
 @include('layouts._footer')
 	<script src="{{asset('web/library/jquery.form/jquery.form.js')}}"></script>

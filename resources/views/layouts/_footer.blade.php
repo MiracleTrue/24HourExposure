@@ -4,7 +4,7 @@
             <li class="{{
             active_class(if_route('exposures.index'))
             }}"><a href="{{route('exposures.index')}}"><i
-                            class="fa fa-warning fa-2x"></i><span>曝光台</span></a></li>
+                            class="fa fa-warning fa-2x"></i><span>可道</span></a></li>
 
             <li class="{{
             active_class(if_route('news.index'))

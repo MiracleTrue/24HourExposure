@@ -96,7 +96,7 @@
     <div class="addbox">
         <div class="header">
             <a href="{{route('root')}}" class="goback"><</a>
-            <span>增加曝光</span>
+            <span>增加对象</span>
 
         </div>
         <div class="pay_method">
@@ -126,7 +126,7 @@
             </div>
             <div>
                 <p>
-                    <span>曝光对象：</span>
+                    <span>对象：</span>
                     <input name="name" type="" placeholder="" value="{{ old('name') }}"/>
                 </p>
                 <span class="tipinfo"></span>
@@ -134,7 +134,7 @@
             <div>
                 <p>
                     <span>标题：</span>
-                    <input name="title" type="text" placeholder="请输入要曝光的对象" value="{{ old('title') }}"/>
+                    <input name="title" type="text" placeholder="请输入对象" value="{{ old('title') }}"/>
                 </p>
                 <span class="tipinfo"></span>
             </div>
@@ -215,14 +215,14 @@
                         required: "请选择分类"
                     },
                     name: {
-                        required: "请输入曝光对象",
+                        required: "请输入对象名称",
                     },
                     title: {
                         required: '请输入标题',
 
                     },
                     content: {
-                        required: "请输入曝光的内容",
+                        required: "请输入对象的内容",
 
                     }
                 },
