@@ -35,8 +35,8 @@
                     <option value="">请选择</option>
                     <option value="created_time_desc">时间由先到后</option>
                     <option value="created_time_asc">时间由后到先</option>
-                    <option value="gift_amount_more">礼物金额由多到少</option>
-                    <option value="gift_amount_less">礼物金额由少到多</option>
+                    <option value="gift_amount_more">礼物由多到少</option>
+                    <option value="gift_amount_less">礼物由少到多</option>
                 </select>
             </div>
             </form>
