@@ -83,6 +83,9 @@ class ExposuresController extends Controller
             $grid->user('曝光人')->display(function ($data) {
                 return $data['name'] . "($data[phone])";
             });
+            $grid->location('城市')->display(function ($data) {
+                return $data['city'];
+            });
             $grid->name('曝光对象');
             $grid->title('标题');
             $grid->gift_amount('礼物总金额')->sortable();
