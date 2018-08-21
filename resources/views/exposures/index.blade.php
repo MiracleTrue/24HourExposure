@@ -7,9 +7,9 @@
     <div class="homebox">
         <div class="location">
             <!--定位-->
-            <div>
-                <a href="{{ route('locations.relocation') }}" id="position">{{$lbs->city}}</a>
-            </div>
+            {{--<div>--}}
+                {{--<a href="{{ route('locations.relocation') }}" id="position">{{$lbs->city}}</a>--}}
+            {{--</div>--}}
             <div>
                 <form class="myselcct" action="{{route('exposures.index')}}" method="get">
                     <input type="text" name="search" placeholder="请输入对象名称精确查找"/>
